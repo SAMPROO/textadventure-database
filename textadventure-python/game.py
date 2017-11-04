@@ -31,10 +31,6 @@ def look_around(location_id):
     return
 
 
-
-def github():
-    print()
-
 def move(from_loc, to_loc, direction):
     from_loc = location_id
     to_loc = location_id
