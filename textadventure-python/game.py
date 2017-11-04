@@ -31,6 +31,7 @@ def look_around(location_id):
     return
 
 
+
 def github():
     print()
 
