@@ -3,10 +3,12 @@ import pymysql
 conn = pymysql.connect(host = '127.0.0.1', user = 'root', password = 'sampo', database = 'textadventure-database')
 cur = conn.cursor()
 
+
+
 def get_location(location_id):
     ret = None
     cur = conn.cursor()
-    sql = "SELECT location_name, description FROM location WHERE location_id='" + location_id + "'"
+    sql = "SELECT location_name, description FROM location WHERE location_id='" + str(location_id) + "'"
     cur.execute(sql)
     for row in cur:
         print (row[0])
@@ -17,12 +19,10 @@ def get_location(location_id):
 
 def look(location_id):
     cur = conn.cursor()
-    sql = "SELECT description FROM location WHERE location_id = '" + id + "'"
+    sql = "SELECT description FROM location WHERE location_id = '" + str(location_id) + "'"
     cur.execute(sql)
     for row in cur:
         print (row[0])
-        if (row[1] != ""):
-            print(row[1])
     return
 #..
 def look_around(location_id):
@@ -32,17 +32,14 @@ def look_around(location_id):
 
 
 def move(from_loc, to_loc, direction):
-    from_loc = location_id
-    to_loc = location_id
     cur = conn.cursor()
-    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + from_loc + "' AND to_location_id = '" + to_loc + "' AND neighbour_direction_id = '" + direction + "'"
+    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(from_loc) + "' AND to_location_id = '" + str(to_loc) + "' AND neighbour_direction_id = '" + str(direction) + "'"
     cur.execute(sql)
-    if cur.rowcount >= 1:
-        for row in cur.fetchall():
-            to_locaction_id = row[0]
+    newroom = get_location(to_loc)
+    if newroom is None:
+        print("You cant go that way")
     else:
-        to_locaction_id = location_id;  # movement not possible
-    return to_locaction_id
+        get_location(to_loc)
 
 
 location_id = 1
@@ -62,7 +59,6 @@ while action != "exit" or "quit" or "end":
     # look
     if (action == "look" or action == "examine" or action == "view"):
         look_around(location_id);
-    elif (action == "n" or action == "s" or action == "w" or action == "e" or action == "u" or action == "d" or action == "north" or action == "south" or action == "west" or action == "east" or action == "up" or action == "down"):
+    if (action == "n" or "s" or "w" or "e" or "u" or "d" or "north" or "south" or "west" or "east" or "up" or "down"):
         move(location_id, location_id, action)
 
-conn.rollback()
