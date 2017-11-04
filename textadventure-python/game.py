@@ -16,7 +16,7 @@ def get_location(location_id):
             print(row[1])
     return
 
-
+#LOOK WITHIN A LOCATION
 def look(location_id):
     cur = conn.cursor()
     sql = "SELECT description FROM location WHERE location_id = '" + str(location_id) + "'"
@@ -30,7 +30,7 @@ def look_around(location_id):
     get_location(location_id)
     return
 
-
+#MOVE BETWEEN ROOMS
 def move(from_loc, to_loc, direction):
     cur = conn.cursor()
     sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(from_loc) + "' AND to_location_id = '" + str(to_loc) + "' AND neighbour_direction_id = '" + str(direction) + "'"
@@ -45,8 +45,8 @@ def move(from_loc, to_loc, direction):
 location_id = 1
 action = ""
 
-look(location_id)
-
+get_location(location_id)
+#MAIN LOOP
 while action != "exit" or "quit" or "end":
 
     print("")
@@ -59,6 +59,10 @@ while action != "exit" or "quit" or "end":
     # look
     if (action == "look" or action == "examine" or action == "view"):
         look_around(location_id);
+        
     if (action == "n" or "s" or "w" or "e" or "u" or "d" or "north" or "south" or "west" or "east" or "up" or "down"):
+        #MOVE TO GIVEN LOCATION
         move(location_id, location_id, action)
+        get_location(location_id)
 
+conn.rollback()
