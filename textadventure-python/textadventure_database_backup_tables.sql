@@ -11,11 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
--- Dumping database structure for textadventure_database
-CREATE DATABASE IF NOT EXISTS `textadventure_database` /*!40100 DEFAULT CHARACTER SET latin1 */;
-USE `textadventure_database`;
-
 -- Dumping structure for table textadventure_database.answer
 CREATE TABLE IF NOT EXISTS `answer` (
   `answer_id` int(11) NOT NULL AUTO_INCREMENT,
@@ -50,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `character` (
 -- Dumping data for table textadventure_database.character: ~1 rows (approximately)
 /*!40000 ALTER TABLE `character` DISABLE KEYS */;
 INSERT INTO `character` (`character_id`, `name`, `hp`, `max_hp`, `attack`, `defence`, `money`, `alive`, `inventory`, `location_id`) VALUES
-	(1textadventure_databasetextadventure_database, 'Traveller', 100, 100, 10, 10, 0, 1, 0, 1);
+	(1, 'Traveller', 100, 100, 10, 10, 0, 1, 0, 1);
 /*!40000 ALTER TABLE `character` ENABLE KEYS */;
 
 -- Dumping structure for table textadventure_database.direction
@@ -139,7 +134,7 @@ CREATE TABLE IF NOT EXISTS `locnpc` (
   CONSTRAINT `FK_locnpc_npc` FOREIGN KEY (`locnpc_npc_id`) REFERENCES `npc` (`npc_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
--- Dumping data for table textadventure_database.locnpc: ~0 rows (approximately)
+-- Dumping data for table textadventure_database.locnpc: ~1 rows (approximately)
 /*!40000 ALTER TABLE `locnpc` DISABLE KEYS */;
 INSERT INTO `locnpc` (`locnpc_npc_id`, `locnpc_loc_id`) VALUES
 	(1, 5);
