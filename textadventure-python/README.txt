@@ -1,0 +1,1 @@
+This is a text adventure school project with python. We are using MySQL for creating a database with the help of ERDPlus.
