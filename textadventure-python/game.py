@@ -30,22 +30,25 @@ def look_around(location_id):
     get_location(location_id)
     return
 
-#MOVE BETWEEN ROOMS
-def move(from_loc, to_loc, direction):
+#MOVE BETWEEN LOCATIONS
+def move(location_id, direction):
     cur = conn.cursor()
-    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(from_loc) + "' AND to_location_id = '" + str(to_loc) + "' AND neighbour_direction_id = '" + str(direction) + "'"
+    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(location_id) + "'AND neighbour_direction_id = '" + str(direction) + "'"
+
     cur.execute(sql)
-    newroom = get_location(to_loc)
-    if newroom is None:
-        print("You cant go that way")
+    if cur.rowcount >= 1:
+        for row in cur.fetchall():
+            location_id = row[1]
+            get_location(location_id)
     else:
-        get_location(to_loc)
+        print("You cant go that way")
+
 
 
 location_id = 1
 action = ""
 
-get_location(location_id)
+look_around(location_id)
 #MAIN LOOP
 while action != "exit" or "quit" or "end":
 
@@ -59,10 +62,10 @@ while action != "exit" or "quit" or "end":
     # look
     if (action == "look" or action == "examine" or action == "view"):
         look_around(location_id);
-        
-    if (action == "n" or "s" or "w" or "e" or "u" or "d" or "north" or "south" or "west" or "east" or "up" or "down"):
+
+    elif (action == "n" or "s" or "w" or "e" or "u" or "d" or "north" or "south" or "west" or "east" or "up" or "down"):
         #MOVE TO GIVEN LOCATION
-        move(location_id, location_id, action)
-        get_location(location_id)
+        move(location_id, action)
+
 
 conn.rollback()
