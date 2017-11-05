@@ -30,15 +30,18 @@ def look_around(location_id):
     get_location(location_id)
     return
 
+def set_location(newLocation):
+    location_id = newLocation
+
 #MOVE BETWEEN LOCATIONS
 def move(location_id, direction):
     cur = conn.cursor()
     sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(location_id) + "'AND neighbour_direction_id = '" + str(direction) + "'"
-
     cur.execute(sql)
     if cur.rowcount >= 1:
         for row in cur.fetchall():
             location_id = row[1]
+            set_location(location_id)
             get_location(location_id)
     else:
         print("You cant go that way")
@@ -74,12 +77,12 @@ while action != "exit" or "quit" or "end":
 
     # look
     if (action == "look" or action == "examine" or action == "view"):
-        look_around(location_id);
+        look(location_id);
 
     elif (action in directions):
         #MOVE TO GIVEN LOCATION
         newLocation = move(location_id, action)
-        location_id = newLocation
+        #newLocation returns None
 
 if location_id is 5:
     print("Game over")
