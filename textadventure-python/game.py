@@ -44,6 +44,19 @@ def move(location_id, direction):
         print("You cant go that way")
 
 
+directions = ['n',
+              's',
+              'w',
+              'e',
+              'u',
+              'd',
+              'north',
+              'south',
+              'west',
+              'east',
+              'up',
+              'down']
+
 
 location_id = 1
 action = ""
@@ -63,9 +76,10 @@ while action != "exit" or "quit" or "end":
     if (action == "look" or action == "examine" or action == "view"):
         look_around(location_id);
 
-    elif (action == "n" or "s" or "w" or "e" or "u" or "d" or "north" or "south" or "west" or "east" or "up" or "down"):
+    elif (action in directions):
         #MOVE TO GIVEN LOCATION
-        move(location_id, action)
+        newLocation = move(location_id, action)
+        location_id = newLocation
 
-
-conn.rollback()
+if location_id is 5:
+    print("Game over")
