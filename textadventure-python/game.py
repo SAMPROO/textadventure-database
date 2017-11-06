@@ -41,10 +41,21 @@ def move(location_id, direction):
     if cur.rowcount >= 1:
         for row in cur.fetchall():
             location_id = row[1]
-            set_location(location_id)
+            print(location_id)
             get_location(location_id)
     else:
         print("You cant go that way")
+    return location_id
+#TRYING
+def directions(dir):
+    cur = conn.cursor()
+    sql = "SELECT direction_id, direction FROM direction WHERE direction = '" + str(dir) + "'"
+    if cur.rowcount >= 1:
+        for row in cur.fetchall():
+            id = row[0]
+            print(id)
+
+    cur.execute(sql)
 
 
 directions = ['n',
@@ -66,6 +77,7 @@ action = ""
 
 look_around(location_id)
 #MAIN LOOP
+
 while action != "exit" or "quit" or "end":
 
     print("")
@@ -77,12 +89,15 @@ while action != "exit" or "quit" or "end":
 
     # look
     if (action == "look" or action == "examine" or action == "view"):
+        print(location_id)
         look(location_id);
 
     elif (action in directions):
         #MOVE TO GIVEN LOCATION
-        newLocation = move(location_id, action)
-        #newLocation returns None
 
-if location_id is 5:
-    print("Game over")
+        newLocation = move(location_id, action)
+        location_id = newLocation
+
+
+    if location_id is 5:
+        print("Game over")
