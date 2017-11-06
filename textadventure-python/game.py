@@ -1,10 +1,10 @@
 import pymysql
-#CONNECTION TO DATABASE
+#CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(host = '127.0.0.1', user = 'root', password = 'sampo', database = 'textadventure-database')
 cur = conn.cursor()
 
 
-#GETTING LOCATION AFTER MOVEMENT
+#GETTING LOCATION AFTER MOVEMENT----------------------------------------------------------------------------------------------
 def get_location(location_id):
     cur = conn.cursor()
     sql = "SELECT location_name, description FROM location WHERE location_id='" + str(location_id) + "'"
@@ -15,13 +15,13 @@ def get_location(location_id):
             print(row[1])
     return
 
-#LOOK WITHIN A LOCATION
+#LOOK WITHIN A LOCATION-------------------------------------------------------------------------------------------------------
 def look_around(location_id):
     print("-"*80)
     get_location(location_id)
     return
 
-#MOVE BETWEEN LOCATIONS
+#MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
 def move(location_id, direction):
     cur = conn.cursor()
     sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
@@ -37,19 +37,19 @@ def move(location_id, direction):
         print("You cant go that way")
     return location_id
 
-#COMMAND LIST
+#COMMAND LIST---------------------------------------------------------------------------------------------------------------
 directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
 look = ["view", "look", "examine"]
 quit = ['exit', 'quit', 'end', 'finnish']
 
 all_commands = directions + look + quit
 
-#STARTING VALUES
+#STARTING VALUES------------------------------------------------------------------------------------------------------------
 location_id = 1
 look_around(location_id)
 action = ""
 
-#MAIN LOOP
+#MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 while action not in quit:
 
     #ACTION TO LOWERCASE AND ONLY FIRST WORD
@@ -70,7 +70,8 @@ while action not in quit:
 
     #MOVE AROUND
     if action in directions:
-        move(location_id, action)
+        newLocatin = move(location_id, action)
+        location_id = newLocatin
 
     #END GAME
     if location_id is 5:
