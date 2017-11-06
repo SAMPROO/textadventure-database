@@ -38,7 +38,7 @@ def move(location_id, direction):
     cur = conn.cursor()
     sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
            direction ON neighbours.neighbour_direction_id = direction.direction_id WHERE \
-           direction.direction = direction.direction_id = '" + direction + "' AND from_location_id = '" + str(location_id) + "'"
+           direction.direction ='" + direction + "' OR  direction.direction_id = '" + direction + "' AND from_location_id = '" + str(location_id) + "'"
 
    # sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(location_id) + "' AND neighbour_direction_id = '" + str(direction) + "'"
     #print(sql)
