@@ -22,11 +22,18 @@ def look_around(location_id):
     return
 
 #MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
+#direction.direction PRINTS OUT ALL THE ROOMS WITH VALUE OF direction WITHOUT REGARDING THE CURRENT locatian_id
+#FOR EX. -->west
+    #ROOM 2
+        #...
+    #ROOM 4
+        #...
 def move(location_id, direction):
     cur = conn.cursor()
-    sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
-           direction ON neighbours.neighbour_direction_id = direction.direction_id WHERE \
-           direction.direction ='" + direction + "' OR  direction.direction_id = '" + direction + "' AND from_location_id = '" + str(location_id) + "'"
+    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
+            direction ON neighbours.neighbour_direction_id = direction.direction_id WHERE \
+            direction.direction ='" + direction + "' OR direction.direction_id = '" + direction + "' AND \
+            from_location_id = '" + str(location_id) + "'"
 
     cur.execute(sql)
     if cur.rowcount >= 1:
@@ -36,6 +43,12 @@ def move(location_id, direction):
     else:
         print("You cant go that way")
     return location_id
+'''
+def direction(input_direction):
+    sql = "SELECT neighbour_direction_id FROM neigbours INNER JOIN direction ON neighbour.neighbour_direction_id = direction.direction_id WHERE  \
+            direction.direction = '" + input_direction + "' OR direction.direction_id = '" + input_direction + "'"
+    cur.execute(sql)
+'''
 
 #COMMAND LIST---------------------------------------------------------------------------------------------------------------
 directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
@@ -70,6 +83,7 @@ while action not in quit:
 
     #MOVE AROUND
     if action in directions:
+        #direction(action)
         newLocatin = move(location_id, action)
         location_id = newLocatin
 
