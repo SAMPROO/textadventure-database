@@ -36,49 +36,48 @@ def set_location(newLocation):
 #MOVE BETWEEN LOCATIONS
 def move(location_id, direction):
     cur = conn.cursor()
-    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(location_id) + "'AND neighbour_direction_id = '" + str(direction) + "'"
+    sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
+           direction ON neighbours.neighbour_direction_id = direction.direction_id WHERE \
+           direction.direction = direction.direction_id = '" + direction + "' AND from_location_id = '" + str(location_id) + "'"
+
+   # sql = "SELECT from_location_id, neighbours.to_location_id, neighbour_direction_id FROM neighbours WHERE from_location_id = '" + str(location_id) + "' AND neighbour_direction_id = '" + str(direction) + "'"
+    #print(sql)
     cur.execute(sql)
     if cur.rowcount >= 1:
         for row in cur.fetchall():
             location_id = row[1]
-            print(location_id)
             get_location(location_id)
     else:
         print("You cant go that way")
     return location_id
 #TRYING
-def directions(dir):
+def directions1(input_action):
     cur = conn.cursor()
-    sql = "SELECT direction_id, direction FROM direction WHERE direction = '" + str(dir) + "'"
-    if cur.rowcount >= 1:
-        for row in cur.fetchall():
-            id = row[0]
-            print(id)
+    sql = "SELECT to_location_id,direction_id, direction FROM neighbours INNER JOIN direction ON neigbours.neighbour_direction_id = direction.direction_id WHERE direction.direction_id = direction.direction = '" + input_action + "'"
+    print(sql)
+    cur.execute(sql)
+    move(location_id, input_action)
+
+
+
+
+
 
     cur.execute(sql)
 
 
-directions = ['n',
-              's',
-              'w',
-              'e',
-              'u',
-              'd',
-              'north',
-              'south',
-              'west',
-              'east',
-              'up',
-              'down']
-
+directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
+look = ["view", "look", "examine"]
+quit = ['exit', 'quit', 'end', 'finnish']
 
 location_id = 1
 action = ""
 
 look_around(location_id)
+
 #MAIN LOOP
 
-while action != "exit" or "quit" or "end":
+while action not in quit:
 
     print("")
     input_string = input("--> ").split()
@@ -88,12 +87,11 @@ while action != "exit" or "quit" or "end":
         action = ""
 
     # look
-    if (action == "look" or action == "examine" or action == "view"):
-        print(location_id)
+    if (action in look):
         look(location_id);
 
-    elif (action in directions):
-        #MOVE TO GIVEN LOCATION
+    if action in directions:
+        #directions1(action)
 
         newLocation = move(location_id, action)
         location_id = newLocation
