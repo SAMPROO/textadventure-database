@@ -22,18 +22,21 @@ def look_around(location_id):
     return
 
 #MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
-#direction.direction PRINTS OUT ALL THE ROOMS WITH VALUE OF direction WITHOUT REGARDING THE CURRENT locatian_id
-#FOR EX. -->west
-    #ROOM 2
-        #...
-    #ROOM 4
-        #...
 def move(location_id, direction):
     cur = conn.cursor()
-    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours INNER JOIN \
-            direction ON neighbours.neighbour_direction_id = direction.direction_id WHERE \
-            direction.direction ='" + direction + "' OR direction.direction_id = '" + direction + "' AND \
-            from_location_id = '" + str(location_id) + "'"
+
+    sql2 = "SELECT direction FROM direction WHERE direction_id='" + direction + "'"
+
+    cur.execute(sql2)
+    if cur.rowcount >= 1:
+        result2 = cur.fetchall()
+        direction = result2[0][0]
+
+    sql = "SELECT from_location_id, to_location_id, neighbour_direction_id FROM neighbours INNER JOIN  \
+          direction ON neighbours.neighbour_direction_id = direction_id WHERE \
+          direction.direction_id ='" + direction + "' OR direction.direction = '" + direction + "' AND \
+          from_location_id = '" + str(location_id) + "'"
+
 
     cur.execute(sql)
     if cur.rowcount >= 1:
@@ -43,17 +46,32 @@ def move(location_id, direction):
     else:
         print("You cant go that way")
     return location_id
-'''
-def direction(input_direction):
-    sql = "SELECT neighbour_direction_id FROM neigbours INNER JOIN direction ON neighbour.neighbour_direction_id = direction.direction_id WHERE  \
-            direction.direction = '" + input_direction + "' OR direction.direction_id = '" + input_direction + "'"
+
+def talk(location_id, answer):
+    cur = conn.cursor()
+    sql = "SELECT locnpc_loc_id, npc_id, line_id, line, answer_id, description FROM line INNER JOIN \
+          answer ON line.line_id = answer.answer_id WHERE answer.answer_id = '" + answer + "' AND locnpc_loc_id = '" + location_id + "' \
+           AND line_id = 1 "
+
+
     cur.execute(sql)
-'''
+    if cur.rowcount >= 1:
+        for row in cur.fetchall():
+            if location_id is row[1]:
+
+                while answer not in end_con:
+                    sql2 = "SELECT * FROM line WHERE line_id ="
+
+
+    return
+
 
 #COMMAND LIST---------------------------------------------------------------------------------------------------------------
 directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
-look = ["view", "look", "examine"]
+look = ['view', 'look', 'examine', 'inspect']
 quit = ['exit', 'quit', 'end', 'finnish']
+talk = ['talk', 'speak', 'interact']
+end_con = ['leave']
 
 all_commands = directions + look + quit
 
@@ -73,6 +91,14 @@ while action not in quit:
     else:
         action = ""
 
+    if action in quit:
+        print("Are you sure you want to quit? Y/N")
+        answer = input("")
+        if answer is "y":
+            break
+        else:
+            action = ""
+
     #COMMAND NOT REGOGNIZED
     if action not in all_commands:
         print("I don't undestand")
@@ -87,6 +113,12 @@ while action not in quit:
         newLocatin = move(location_id, action)
         location_id = newLocatin
 
+    #INTERACTION
+    if action in talk:
+        print()
+
     #END GAME
     if location_id is 5:
         print("Game over")
+
+conn.rollback()
