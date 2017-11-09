@@ -119,13 +119,16 @@ def talk(location_id):
                                         print(str(i) + ": " + row4[1])
                                     print("3: Leave")
                                     print()
+
                                     while True:
                                         try:
                                             response = int(input("--> "))
                                             break
                                         except ValueError:
                                             print("--> Sorry I'm a bit tired.. What I meant to say was: ")
+
                                     sql5 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(id) + "'"
+                                    print(sql5)
                                     cur.execute(sql5)
                                     if cur.rowcount >= 1:
                                         row5 = cur.fetchall()
@@ -136,6 +139,12 @@ def talk(location_id):
                                             next_line = row5[1][2]
                                             answer(next_line, select_npc)
                                         elif response == 3:
+                                            sql6 = "UPDATE line, answer SET line.line_id = line.line_id - 1, answer.previous_answer_line_id = answer.previous_answer_line_id - 1 \
+                                                    WHERE line.line_id = answer.previous_answer_line_id \
+                                                    AND line.line_npc_id = '" + str(id) + "'"
+                                            sql7 = "DELETE FROM line WHERE line_id <= 0"
+                                            cur.execute(sql6)
+                                            cur.execute(sql7)
                                             look_around(location_id)
                             else:
                                 print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
@@ -161,7 +170,7 @@ def answer(next_line, select_npc):
         i = 0
         for row4 in cur:
             i += 1
-            print(str(i) + ": " + row4[1])
+            print(str(i) + ": " + str(row4[1]))
         print("3: Leave")
         print()
 
