@@ -92,109 +92,78 @@ def talk(location_id):
                         select_npc = input("--> ")
                         if len(select_npc) >= 1:
                             select_npc[0].lower()
-                        if select_npc not in name_list:
-                                print("\nWho?\n3) Leave\n")
-                                if select_npc == 3:
-                                    look_around(location_id)
-                                    break
+                        if select_npc in name_list:
+
+                                sql2 = "SELECT npc.name, npc.npc_id FROM npc WHERE npc.name = '" + str(select_npc) + "'"
+                                cur.execute(sql2)
+                                for row in cur:
+                                    id = row[1]
+
+                                answer(select_npc, id, 0)
+                        elif select_npc == "3":
+                            look_around(location_id)
+                            break
                         else:
-                            sql2 = "SELECT npc.name, npc.npc_id FROM npc WHERE npc.name = '" + select_npc + "'"
-                            cur.execute(sql2)
-                            for row in cur:
-                                id = row[1]
-
-
-                            sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = 1"
-                            sql4 = "SELECT previous_answer_line_id, description FROM answer INNER JOIN line ON answer.previous_answer_line_id = line.line_id WHERE answer.previous_answer_line_id = 1"
-                            cur.execute(sql3)
-                            for row3 in cur:
-                                if row3[1] is not 0:
-                                    print(select_npc.upper() + ": " + row3[1])
-                                    print()
-                                    cur.execute(sql4)
-                                    #time.sleep(3)
-                                    i = 0
-                                    for row4 in cur:
-                                        i += 1
-                                        print(str(i) + ": " + row4[1])
-                                    print("3: Leave")
-                                    print()
-
-                                    while True:
-                                        try:
-                                            response = int(input("--> "))
-                                            break
-                                        except ValueError:
-                                            print("--> Sorry I'm a bit tired.. What I meant to say was: ")
-
-                                    sql5 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(id) + "'"
-                                    print(sql5)
-                                    cur.execute(sql5)
-                                    if cur.rowcount >= 1:
-                                        row5 = cur.fetchall()
-                                        if response == 1:
-                                            next_line = row5[0][2]
-                                            answer(next_line, select_npc)
-                                        elif response == 2:
-                                            next_line = row5[1][2]
-                                            answer(next_line, select_npc)
-                                        elif response == 3:
-                                            sql6 = "UPDATE line, answer SET line.line_id = line.line_id - 1, answer.previous_answer_line_id = answer.previous_answer_line_id - 1 \
-                                                    WHERE line.line_id = answer.previous_answer_line_id \
-                                                    AND line.line_npc_id = '" + str(id) + "'"
-                                            sql7 = "DELETE FROM line WHERE line_id <= 0"
-                                            cur.execute(sql6)
-                                            cur.execute(sql7)
-                                            look_around(location_id)
-                            else:
-                                print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
-                                look_around(location_id)
+                            print("\nWho?\n3) Leave\n")
     else:
         print("There's no one here to talk to")
 
 
-def answer(next_line, select_npc):
+def answer(select_npc, id, next_line):
+    #ENDS CONVO WHEN LAST LINE = "0"
+    #-------------------
+    sql_end = "SELECT line_id, met_npc FROM npc INNER JOIN line ON npc.npc_id = line.line_npc_id WHERE line = '0' AND npc.npc_id = '" + str(id) + "'"
+    cur.execute(sql_end)
+    for row in cur.fetchall():
+        if row[0] is not next_line and row[1] is 0:
+    #---------------------
+            if next_line == 0:
+                sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = 1"
+                sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = 1"
+            else:
+                sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
+                sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
+            cur.execute(sql3)
+            for row3 in cur:
+                    if row3[1] is not "0":
+                        print(select_npc.upper() + ": " + row3[1])
+                        print()
+                        cur.execute(sql4)
+                        # time.sleep(3)
+                        i = 0
+                        for row4 in cur:
+                            i += 1
+                            print(str(i) + ": " + str(row4[1]))
+                        print()
+                        while True:
+                            try:
+                                response = int(input("--> "))
+                                break
+                            except ValueError:
+                                print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
+                        if response == 1:
+                                sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                                cur.execute(sql5)
+                                if cur.rowcount >= 1:
+                                    row5 = cur.fetchall()
+                                    next_line = row5[0][0]
 
-        sql3 = "SELECT line_id, line FROM line WHERE line_id = '" + str(next_line) + "'"
-        sql4 = "SELECT previous_answer_line_id, description FROM answer INNER JOIN line ON answer.previous_answer_line_id = line.line_id WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
+                                answer(select_npc, id, next_line)
+                        elif response == 2:
+                            sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                            cur.execute(sql5)
+                            if cur.rowcount >= 1:
+                                row5 = cur.fetchall()
+                                next_line = row5[1][0]
 
-        cur.execute(sql3)
-
-        for row3 in cur:
-            print(select_npc.upper() + ": " + row3[1])
-
-        print()
-        cur.execute(sql4)
-        # time.sleep(3)
-        i = 0
-        for row4 in cur:
-            i += 1
-            print(str(i) + ": " + str(row4[1]))
-        print("3: Leave")
-        print()
-
-        while True:
-            try:
-                response = int(input("--> "))
-                break
-            except ValueError:
-                print("Sorry I'm a bit tired.. What I meant to say was: ")
-
-        sql5 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(next_line) + "'"
-        cur.execute(sql5)
-        if cur.rowcount >= 1:
-            row5 = cur.fetchall()
-            #GIVES NPCs NEXT LINE DEPENDIN ON THE INPUT
-            if response == 1:
-                next_line = row5[0][2]
-                answer(next_line, select_npc)
-            elif response == 2:
-                next_line = row5[1][2]
-                answer(next_line, select_npc)
-            elif response == 3:
-                look_around(location_id)
-
+                            answer(select_npc, id, next_line)
+        else:
+            sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
+            cur.execute(sql_met)
+            print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
+            time.sleep(2)
+            look_around(location_id)
 
 
 #COMMAND LIST---------------------------------------------------------------------------------------------------------------
