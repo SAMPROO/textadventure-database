@@ -185,13 +185,36 @@ action = ""
 while action not in quit:
 
     #ACTION TO LOWERCASE AND ONLY FIRST WORD
+    #PARSER--------------------------------------------------------------------
+    sql_articles = "SELECT * FROM articles"
+    sql_verbs = "SELECT * FROM verbs"
+    sql_dictionary = "SELECT * FROM dictionary"
+
+    verb = None
+    noun = None
     print("")
     input_string = input("--> ").split()
+    #VERB CHECJER-----------------------
+    cur.execute(sql_verbs)
+    for row in cur:
+        for command in input_string:
+            if command in row:
+                verb = command
+    #----------------------------------
+    #NOUN CHECKER----------------------
+    cur.execute(sql_dictionary)
+    for row in cur:
+        for command in input_string:
+            if command in row:
+                noun = command
+
+    order = [verb, noun]
+
     if len(input_string) >= 1:
         action = input_string[0].lower()
     else:
         action = ""
-
+    #---------------------------------------------------------------------------
     if action in quit:
         print("Are you sure you want to quit? Y/N")
         answer = input("")
