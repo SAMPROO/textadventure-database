@@ -1,7 +1,8 @@
 import pymysql
 import time
+import databaseconfig as cfg
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
-conn = pymysql.connect(host = '127.0.0.1', user = 'root', password = 'sampo', database = 'textadventure-database')
+conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
 cur = conn.cursor()
 
 
@@ -165,6 +166,32 @@ def answer(select_npc, id, next_line):
             time.sleep(2)
             look_around(location_id)
 
+def add():
+    cur = conn.cursor()
+    id = 5
+    name = str(input("NAME: "))
+    des = str(input("DESCRIPTION: "))
+    hp = int(input("HP: "))
+    loc = int(input("LOCATION (1 - 5): "))
+
+    sql = "INSERT INTO npc VALUES('%d', '%s', '%s', '%d', 0, 1)" % \
+            (id, name, des , hp)
+    cur.execute(sql)
+    sql = "INSERT INTO locnpc VALUE ('%d', '%d')" % \
+          (id, loc)
+    cur.execute(sql)
+    id = id + 1
+
+    #conn.commit()
+def change():
+    cur = conn.cursor()
+    print_npc(location_id)
+    name = str(input("CHANGE NAME WITH OF THE HIGHEST ID NPC TO: "))
+    sql = "UPDATE npc SET name = '%s' WHERE npc_id = (SELECT MAX(npc_id))" % \
+          (name)
+    cur.execute(sql)
+    #conn.commit()
+
 
 #COMMAND LIST---------------------------------------------------------------------------------------------------------------
 directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
@@ -172,7 +199,7 @@ look = ['view', 'look', 'examine', 'inspect']
 quit = ['exit', 'quit', 'end', 'finnish']
 talk_command = ['talk', 'speak', 'interact']
 end_con = ['leave']
-bla = ['ä']
+bla = ['ä', 'add', 'change']
 
 all_commands = directions + look + quit + talk_command + end_con + bla
 
@@ -194,6 +221,7 @@ while action not in quit:
     noun = None
     print("")
     input_string = input("--> ").split()
+
     #VERB CHECJER-----------------------
     cur.execute(sql_verbs)
     for row in cur:
@@ -246,4 +274,11 @@ while action not in quit:
     if location_id is 5:
         print("Game over")
 
+    #ADD NPC (school)
+    if action == "add":
+        add()
+
+    #CHANGE NAME WITH HIGHEST ID (school)
+    if action == "change":
+        change()
 conn.rollback()
