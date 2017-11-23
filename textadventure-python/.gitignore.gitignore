@@ -1,0 +1,4 @@
+*config.py
+databaseconfig.py
+*.xml
+__pycache__/

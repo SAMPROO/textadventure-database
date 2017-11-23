@@ -189,29 +189,131 @@ while action not in quit:
     #ACTION TO LOWERCASE AND ONLY FIRST WORD
     #PARSER--------------------------------------------------------------------
     sql_articles = "SELECT * FROM articles"
-    sql_verbs = "SELECT * FROM verbs"
-    sql_dictionary = "SELECT * FROM dictionary"
+    articles_list = []
+    cur.execute(sql_articles)
+    articles = cur.fetchall()
+    for word in articles:
+        articles = word[0]
+        articles_list.append(articles)
 
+    sql_verbs = "SELECT verbs FROM verbs"
+    verbs_list = []
+    cur.execute(sql_verbs)
+    verbs = cur.fetchall()
+    for word in verbs:
+        verb = word[0]
+        verbs_list.append(verb)
+
+    print(verbs_list)
+
+
+    sql_dictionary = "SELECT dictionary FROM dictionary"
+    dictionary_list = []
+    cur.execute(sql_dictionary)
+    dictionary = cur.fetchall()
+    for word in dictionary:
+        noun = word[0]
+        dictionary_list.append(noun)
+
+    sql_prepositions = "SELECT * FROM prepositions"
+    cur.execute(sql_prepositions)
+    preposition_list = []
+    prepositions = cur.fetchall()
+    for word in prepositions:
+        preposition = word[1]
+        preposition_list.append(preposition)
+
+    print(preposition_list)
     verb = None
-    noun = None
-    print("")
-    input_string = input("--> ").split()
+    preposition = None
+    preposition_1 = None
+    direct = None
+    preposition_2 = None
+    indirect = None
 
-    #VERB CHECJER-----------------------
+    print("")
+    input_string = input("--> ").lower().split()
+
+    for word in input_string:
+
+        if word in verbs_list and verb == None:
+            sql = "SELECT id FROM verbs WHERE verbs = '" + word + "'"
+            print(sql)
+            cur.execute(sql)
+            for row in cur:
+                verb = row[0]
+            continue
+
+        if word in dictionary_list and direct == None:
+            sql = "SELECT id FROM dictionary WHERE dictionary = '" + word + "'"
+            cur.execute(sql)
+            for row in cur:
+                direct = row[0]
+            continue
+
+        if word in preposition_list and preposition == None:
+            sql = "SELECT id FROM prepositions WHERE prepositions = '" + word + "'"
+            cur.execute(sql)
+            for row in cur:
+                preposition = row[0]
+            continue
+
+
+        if word in dictionary_list and indirect == None:
+            sql = "SELECT id FROM dictionary WHERE dictionary = '" + word + "'"
+            cur.execute(sql)
+            for row in cur:
+                indirect = row[0]
+            continue
+
+
+
+    order = [verb, direct, preposition, indirect]
+    for n, i in enumerate(order):
+        if i == None:
+            order[n] = 255
+
+
+
+    sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \
+                AND direct_object = {1} AND preposition = {2} AND indirect_object = {3}".format(order[0], order[1], order[2], order[3])
+    print(sql_check)
+    cur.execute(sql_check)
+    cur.fetchall()
+    for row in cur:
+        test = row[0]
+        print(test)
+
+    '''    
+    #VERB CHECKER-----------------------
     cur.execute(sql_verbs)
     for row in cur:
         for command in input_string:
             if command in row:
                 verb = command
     #----------------------------------
-    #NOUN CHECKER----------------------
+    #NOUN/DICTIONARY CHECKER----------------------
     cur.execute(sql_dictionary)
     for row in cur:
         for command in input_string:
             if command in row:
-                noun = command
+                direct = command
 
-    order = [verb, noun]
+    #NOUN/DICTIONARY CHECKER----------------------
+    cur.execute(sql_prepositions)
+    for row in cur:
+        for command in input_string:
+            if command in row:
+                preposition = command
+
+    #NOUN/DICTIONARY CHECKER----------------------
+    cur.execute(sql_dictionary)
+    for row in cur:
+        for command in input_string:
+            if command in row:
+                indirect = command
+
+    '''
 
     if len(input_string) >= 1:
         action = input_string[0].lower()
