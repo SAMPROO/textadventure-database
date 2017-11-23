@@ -1,6 +1,7 @@
 import pymysql
 import time
 import databaseconfig as cfg
+
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
 cur = conn.cursor()
@@ -23,7 +24,7 @@ def get_location(location_id):
 #PRINT NPC------------------------------------------------------------------------------------------------------------------
 def print_npc(location_id):
 
-    sql2 = "SELECT locnpc.locnpc_npc_id, locnpc.locnpc_loc_id, npc.description FROM locnpc INNER JOIN npc ON locnpc.locnpc_npc_id = npc.npc_id WHERE locnpc.locnpc_loc_id = '" + str(location_id) + "'"
+    sql2 = "SELECT npc.npc_id, location.location_id, npc.description FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id WHERE location.location_id = '" + str(location_id) + "'"
     cur.execute(sql2)
     for row in cur.fetchall():
         if cur.rowcount >= 1:
@@ -70,7 +71,7 @@ def move(location_id, direction):
 def talk(location_id):
     cur = conn.cursor()
 
-    sql2 = "SELECT npc.npc_id, npc.name, locnpc.locnpc_loc_id FROM npc INNER JOIN locnpc ON npc.npc_id = locnpc.locnpc_npc_id WHERE locnpc.locnpc_loc_id = '" + str(location_id) + "'"
+    sql2 = "SELECT npc_id, name, npc_location_id FROM npc WHERE npc_location_id = '" + str(location_id) + "'"
     cur.execute(sql2)
     if cur.rowcount >= 1:
         print("Who would you like to talk to?\n-------------------")
@@ -166,32 +167,6 @@ def answer(select_npc, id, next_line):
             time.sleep(2)
             look_around(location_id)
 
-def add():
-    cur = conn.cursor()
-    id = 5
-    name = str(input("NAME: "))
-    des = str(input("DESCRIPTION: "))
-    hp = int(input("HP: "))
-    loc = int(input("LOCATION (1 - 5): "))
-
-    sql = "INSERT INTO npc VALUES('%d', '%s', '%s', '%d', 0, 1)" % \
-            (id, name, des , hp)
-    cur.execute(sql)
-    sql = "INSERT INTO locnpc VALUE ('%d', '%d')" % \
-          (id, loc)
-    cur.execute(sql)
-    id = id + 1
-
-    #conn.commit()
-def change():
-    cur = conn.cursor()
-    print_npc(location_id)
-    name = str(input("CHANGE NAME WITH OF THE HIGHEST ID NPC TO: "))
-    sql = "UPDATE npc SET name = '%s' WHERE npc_id = (SELECT MAX(npc_id))" % \
-          (name)
-    cur.execute(sql)
-    #conn.commit()
-
 
 #COMMAND LIST---------------------------------------------------------------------------------------------------------------
 directions = ['n', 's', 'w', 'e', 'u', 'd', 'north', 'south', 'west', 'east', 'up', 'down']
@@ -273,6 +248,7 @@ while action not in quit:
     #END GAME
     if location_id is 5:
         print("Game over")
+        exit()
 
     #ADD NPC (school)
     if action == "add":
@@ -280,5 +256,5 @@ while action not in quit:
 
     #CHANGE NAME WITH HIGHEST ID (school)
     if action == "change":
-        change()
+        change(location_id)
 conn.rollback()
