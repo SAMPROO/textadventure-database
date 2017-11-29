@@ -6,8 +6,7 @@ def get_location(conn, location_id):
     cur.execute(sql)
     for row in cur:
         print (row[0])
-        if (row[1] != ""):
-            print(row[1])
+        print(row[1])
 
     print_npc(conn, location_id)
 
@@ -16,16 +15,10 @@ def get_location(conn, location_id):
 #PRINT NPC------------------------------------------------------------------------------------------------------------------
 def print_npc(conn, location_id):
     cur = conn.cursor()
-    sql2 = "SELECT npc.npc_id, location.location_id, npc.description FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id WHERE location.location_id = '" + str(location_id) + "'"
-    cur.execute(sql2)
-    for row in cur.fetchall():
-        if cur.rowcount >= 1:
-            if location_id == row[1]:
-                npc = row[0]
-                sql = "SELECT npc.description FROM npc WHERE npc_id = '"+ str(npc) +"'"
-                cur.execute(sql)
-                for row in cur:
-                    print(row[0])
+    sql = "SELECT npc.description FROM npc WHERE npc_location_id = '" + str(location_id) + "'"
+    cur.execute(sql)
+    for row in cur:
+        print(row[0])
 
 
 #LOOK WITHIN A LOCATION-------------------------------------------------------------------------------------------------------
