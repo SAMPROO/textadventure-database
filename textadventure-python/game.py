@@ -69,7 +69,6 @@ while action not in quit:
 
         if word in verbs_list and verb == None:
             sql = "SELECT id FROM verbs WHERE verbs = '" + word + "'"
-            print(sql)
             cur.execute(sql)
             for row in cur:
                 verb = row[0]
@@ -111,49 +110,13 @@ while action not in quit:
     for row in cur:
         subroutine = row[0]
 
+
+
     #RUNS THE FUNCTION
-    location_id = eval(subroutine)
+    try:
+        location_id = eval(subroutine)
+    except NameError:
+        print("I don't understand")
+        pass
 
-
-    '''
-    input_string = input("--> ").split()
-
-    if len(input_string) >= 1:
-        action = input_string[0].lower()
-        print(action)
-    else:
-        action = ""
-    #---------------------------------------------------------------------------
-    if action in quit:
-        print("Are you sure you want to quit? Y/N")
-        answer = input("")
-        if answer is "y":
-            break
-        else:
-            loc_npc_look.look_around(conn, location_id)
-            action = "ä"
-
-    #COMMAND NOT REGOGNIZED
-    if action not in all_commands:
-        print("I don't undestand")
-
-    #LOOK AROUND
-    if action in look:
-        loc_npc_look.look_around(conn, location_id)
-
-    #MOVE AROUND
-    if action in directions:
-        #direction(action)
-        newLocatin = loc_npc_look.move(conn, location_id, action)
-        location_id = newLocatin
-
-    #INTERACTION
-   # if action in talk_command:
-    #    talk_answer.talk(conn, location_id)
-
-    #END GAME
-    if location_id is 5:
-        print("Game over")
-        exit()
-    '''
 conn.rollback()

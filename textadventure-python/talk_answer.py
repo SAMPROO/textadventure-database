@@ -30,18 +30,19 @@ def talk(conn,location_id):
                             select_npc[0].lower()
                         if select_npc in name_list:
 
-                                answer(conn, select_npc, 0)
+                                answer(conn, location_id, select_npc, 0)
 
                         elif select_npc == "3":
-                            loc_npc_look.look_around(location_id)
+                            loc_npc_look.look_around(conn, location_id)
                             break
                         else:
                             print("\nWho?\n3) Leave\n")
     else:
         print("There's no one here to talk to")
+    return location_id
 
 
-def answer(conn, select_npc, next_line):
+def answer(conn, location_id, select_npc, next_line):
     #ENDS CONVO WHEN LAST LINE = "0"
     #-------------------
     cur = conn.cursor()
@@ -65,7 +66,6 @@ def answer(conn, select_npc, next_line):
                         print(select_npc.upper() + ": " + row3[1])
                         print()
                         cur.execute(sql4)
-                        # time.sleep(3)
                         i = 0
                         for row4 in cur:
                             i += 1
@@ -85,7 +85,7 @@ def answer(conn, select_npc, next_line):
                                     row5 = cur.fetchall()
                                     next_line = row5[0][0]
 
-                                answer(conn, select_npc, next_line)
+                                answer(conn, location_id, select_npc, next_line)
                         elif response == 2:
                             sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
                             cur.execute(sql5)
@@ -93,10 +93,12 @@ def answer(conn, select_npc, next_line):
                                 row5 = cur.fetchall()
                                 next_line = row5[1][0]
 
-                            answer(conn, select_npc, next_line)
+                            answer(conn, location_id, select_npc, next_line)
         else:
             sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
             cur.execute(sql_met)
             print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
-            time.sleep(2)
-            loc_npc_look.look_around(location_id)
+            time.sleep(1)
+            print()
+            print()
+            loc_npc_look.look_around(conn, location_id)
