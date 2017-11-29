@@ -9,6 +9,4 @@ def pickup(location_id, item):
         print("You can't take that.")
     cur.execute(s)
 
-pickup(2, "sword")
-pickup(1, "note")
-pickup(4, "chest")
+
