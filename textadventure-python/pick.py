@@ -6,7 +6,7 @@ def pickup(conn, location_id, item):
     print("-------------------")
     print("Input item = " + item)
 
-    if item is 'all' or 'everything':
+    if item == 'all' or item == 'everything':
         items = "SELECT name FROM item WHERE pickable = TRUE AND item_location_id = '" + str(location_id) + "'"
         p = "UPDATE item SET item_character_id = 1 WHERE pickable = TRUE AND item_location_id = '" + str(location_id) + "'"
         s = "UPDATE item SET item_location_id = NULL WHERE item_location_id = '" + str(location_id) + "'"
