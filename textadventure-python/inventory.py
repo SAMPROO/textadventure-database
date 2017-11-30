@@ -9,6 +9,6 @@ def inventory (conn, location_id):
         for item in items:
             print("  -" + item[0])
     else:
-        print("You don't have any items ")
+        print("You don't have anything ")
 
     return location_id
