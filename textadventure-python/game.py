@@ -2,6 +2,8 @@ import pymysql
 import databaseconfig as cfg
 import loc_npc_look
 import talk_answer
+import inventory
+import pick
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
@@ -104,14 +106,13 @@ while action not in quit:
         if i == None:
             order[n] = 255
 
+    print(order)
     #CHECKING IF GIVEN WORD ORDER HAS A SUBROUTINE IN THE DATABASE
     sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \
                 AND direct_object = {1} AND preposition = {2} AND indirect_object = {3}".format(order[0], order[1], order[2], order[3])
     cur.execute(sql_check)
     for row in cur:
         subroutine = row[0]
-
-
 
     #RUNS THE FUNCTION
     try:
