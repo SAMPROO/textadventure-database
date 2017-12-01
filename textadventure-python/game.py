@@ -106,7 +106,6 @@ while action not in quit:
     for n, i in enumerate(order):
         if i == None:
             order[n] = 255
-
     print(order)
     #CHECKING IF GIVEN WORD ORDER HAS A SUBROUTINE IN THE DATABASE
     sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \
