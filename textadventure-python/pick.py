@@ -3,9 +3,11 @@
 def pickup(conn, location_id, item):
 
     if item == None:
+
         print("What do you want to pick up?")
         item = input("--> ")
         pickup(conn, location_id, item)
+
     else:
         # CONNECTS THE ITEM AND DICTIONARY TABLE
         cur = conn.cursor()
@@ -39,7 +41,7 @@ def pickup(conn, location_id, item):
             cur.execute(p)
             cur.execute(s)
         else:
-            print("There's no " + item + "'s here")
+            print("There's no " + item + "'s to be seen")
 
 
 
