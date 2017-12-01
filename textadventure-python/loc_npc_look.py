@@ -8,9 +8,17 @@ def get_location(conn, location_id):
         print (row[0])
         print(row[1])
 
+    print_item(conn, location_id)
     print_npc(conn, location_id)
 
     return location_id
+#PRINT ITEMS--------------------------------------------------------------------------------------------------------------
+def print_item(conn, location_id):
+    cur = conn.cursor()
+    sql = "SELECT description FROM item WHERE item_location_id = '" + str(location_id) + "'"
+    cur.execute(sql)
+    for row in cur:
+        print(row[0])
 
 #PRINT NPC------------------------------------------------------------------------------------------------------------------
 def print_npc(conn, location_id):

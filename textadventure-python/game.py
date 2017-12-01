@@ -4,6 +4,7 @@ import loc_npc_look
 import talk_answer
 import inventory
 import pick
+import drop
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
