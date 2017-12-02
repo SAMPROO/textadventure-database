@@ -12,7 +12,7 @@ def pickup(conn, location_id, item):
         # CONNECTS THE ITEM AND DICTIONARY TABLE
         cur = conn.cursor()
         unite_dictionary = "SELECT item.name FROM item INNER JOIN item_word_table ON item.item_id = item_word_table.item \
-                                INNER JOIN dictionary ON item_word_table.dictionary = dictionary.id WHERE dictionary.dictionary = '" + item + "'"
+                                INNER JOIN dictionary ON item_word_table.dictionary_group = dictionary.id WHERE dictionary.dictionary = '" + item + "'"
         cur.execute(unite_dictionary)
         if cur.rowcount >= 1:
             row = cur.fetchall()
