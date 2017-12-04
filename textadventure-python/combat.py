@@ -1,4 +1,4 @@
-def damage(attacker, defender):
+def damage(conn, attacker, defender):
     if random.randint(att_luck, 100) > 50:
         dealt = att_att*2
     else:
@@ -13,7 +13,7 @@ def damage(attacker, defender):
     return
 
 
-def combat(location_id, npc):
+def combat(conn, location_id, npc):
     sql = "SELECT attack, luck FROM character_"
     cur.execute(sql)
     result = cur.fechall()
@@ -28,4 +28,4 @@ def combat(location_id, npc):
         def_hp = (row[0])
         def_def = (row[1])
         def_dodge = (row[2])
-    return att_att, att_luck, def_def, def_dodge, def_hp
+    return att_att, att_luck, def_def, def_dodge, def_hp, location_id
