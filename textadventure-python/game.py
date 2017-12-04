@@ -6,10 +6,9 @@ import inventory
 import pick
 import drop
 import combat
-import damage
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
-conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
+conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
 cur = conn.cursor()
 
 quit = ['exit', 'quit', 'end', 'finnish']
