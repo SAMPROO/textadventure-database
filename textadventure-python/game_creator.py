@@ -25,6 +25,7 @@ while x != '0':
 
         name = str(input("\nNew item name: "))
         description = str(input("Item description: "))
+        inspect = str(input("Item inspect description: "))
         attack = int(input("Item attack value: "))
         defence = int(input("Item defence value: "))
         money = int(input("Item money value: "))
@@ -33,8 +34,8 @@ while x != '0':
         location = int(input("Item location: "))
     
         try:
-            cur.execute("INSERT INTO item (item_id, item.name, description, attack, defence, money, addhp, pickable, item_location_id, item_character_id) \
-                                VALUES (NULL, '%s', '%s', %d, %d, %d, %d, %d, %d, NULL)" % (name, description, attack, defence, money, addhp, pickable, location))
+            cur.execute("INSERT INTO item (item_id, item.name, description, inspect, attack, defence, money, addhp, pickable, item_location_id, item_character_id) \
+                                VALUES (NULL, '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, NULL)" % (name, description, inspect, attack, defence, money, addhp, pickable, location))
             conn.commit()
             print("SUCCES!!")
         except:
