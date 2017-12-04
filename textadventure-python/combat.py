@@ -1,31 +1,39 @@
 def damage(conn, attacker, defender):
-    if random.randint(att_luck, 100) > 50:
-        dealt = att_att*2
-    else:
-        dealt = att_att
+    for row in attacker:
+        player_hp = (row[0])
+        player_att = (row[1])
+        player_def = (row[2])
+        player_dodge = (row[3])
+        player_luck = (row[4])
+    for row in defender:
+        npc_hp = (row[0])
+        npc_att = (row[1])
+        npc_def = (row[2])
+        npc_dodge = (row[3])
+        npc_luck = (row[4])
+    while player_hp > 0 or npc_hp >0:
 
-    dmg = def_hp - (def_def - dealt)
+        if random.randint(att_luck, 100) > 50:
+            dealt = att_att*2
+        else:
+            dealt = att_att
 
-    if random.randint(def_dodge, 100) > 50:
-        print(defender + "dodged the attack!")
-    else:
-        sql = "UPDATE '%s' SET hp = '%d' WHERE '%s'.'%s'_id" % (defender, dmg, defender, defender)
+        dmg = def_hp - (def_def - dealt)
+
+        if random.randint(def_dodge, 100) > 50:
+            print(defender + "dodged the attack!")
+        else:
+            sql = "UPDATE '%s' SET hp = '%d' WHERE '%s'.'%s'_id" % (defender, dmg, defender, defender)
     return
 
 
 def combat(conn, location_id, npc):
-    sql = "SELECT attack, luck FROM character_"
+    sql = "SELECT hp, attack, defence, dodge, luck FROM character_"
     cur.execute(sql)
-    result = cur.fechall()
-    for row in result:
-        att_att = (row[0])
-        att_luck = (row[1])
-    sql2 = "SELECT hp, defence, dodge,  FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id WHERE location.location_id = '%d' AND npc.name = '+npc+'" % \
+    attacker = cur.fechall()
+    sql2 = "SELECT hp, attack, defence, dodge, luck FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id WHERE location.location_id = '%d' AND npc.name = '+npc+'" % \
     (location_id)
     cur.execute(sql2)
-    result2 = cur.fetchall()
-    for row in result2:
-        def_hp = (row[0])
-        def_def = (row[1])
-        def_dodge = (row[2])
-    return att_att, att_luck, def_def, def_dodge, def_hp, location_id
+    defender = cur.fetchall()
+
+    return location_id
