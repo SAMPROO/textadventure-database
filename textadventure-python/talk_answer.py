@@ -102,3 +102,10 @@ def answer(conn, location_id, select_npc, next_line):
             print()
             print()
             loc_npc_look.look_around(conn, location_id)
+
+        sql = "SELECT answer.subroutine FROM answer WHERE next_answer_line_id = answer.subroutine GROUP BY answer.subroutine"
+        cur.execute(sql)
+        if cur.fetchall() == 255:
+            answer(conn, location_id, select_npc, next_line)
+        else:
+            eval(str(cur.fetchall()))
