@@ -109,3 +109,5 @@ def answer(conn, location_id, select_npc, next_line):
             answer(conn, location_id, select_npc, next_line)
         else:
             eval(str(cur.fetchall()))
+            sql = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
+            cur.execute(sql)
