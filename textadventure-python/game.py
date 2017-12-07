@@ -19,6 +19,9 @@ loc_npc_look.look_around(conn, location_id)
 action = ""
 
 
+combat.combat(conn, 1, 'figure')
+
+combat(conn, 1, 'figure')
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
 while action not in quit:
@@ -96,6 +99,7 @@ while action not in quit:
 
 
         if word in dictionary_list and indirect == None:
+            indirect_str = word
             sql = "SELECT id FROM dictionary WHERE dictionary = '" + word + "'"
             cur.execute(sql)
             for row in cur:
@@ -103,11 +107,13 @@ while action not in quit:
             continue
 
     order = [verb, direct, preposition, indirect]
+
     #CHANGE None VALUES TO 255
     for n, i in enumerate(order):
         if i == None:
             order[n] = 255
     print(order)
+
     #CHECKING IF GIVEN WORD ORDER HAS A SUBROUTINE IN THE DATABASE
     sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \
                 AND direct_object = {1} AND preposition = {2} AND indirect_object = {3}".format(order[0], order[1], order[2], order[3])
