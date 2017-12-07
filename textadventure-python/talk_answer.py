@@ -1,7 +1,5 @@
 import loc_npc_look
 import time
-import pymysql
-conn= pymysql.connect(host="localhost", user="mattina", password="matti12341998", db="mattina", port=4444)
 #TALK TO AN NPC-------------------------------------------------------------------------------------------------------------------
 def talk(conn,location_id):
     cur = conn.cursor()
@@ -112,4 +110,3 @@ def answer(conn, location_id, select_npc, next_line):
             eval(str(cur.fetchall()))
             sql = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
             cur.execute(sql)
-talk(conn, 1)
