@@ -1,6 +1,7 @@
 import loc_npc_look
 import time
-
+import pymysql
+conn= pymysql.connect(host="localhost", user="mattina", password="matti12341998", db="mattina", port=4444)
 #TALK TO AN NPC-------------------------------------------------------------------------------------------------------------------
 def talk(conn,location_id):
     cur = conn.cursor()
@@ -103,11 +104,12 @@ def answer(conn, location_id, select_npc, next_line):
             print()
             loc_npc_look.look_around(conn, location_id)
 
-        sql = "SELECT answer.subroutine FROM answer WHERE next_answer_line_id = answer.subroutine GROUP BY answer.subroutine"
+        sql = "SELECT answer_subroutine FROM answer WHERE answer.answer_id = answer_subroutine GROUP BY answer_subroutine"
         cur.execute(sql)
-        if cur.fetchall() == 255:
+        if cur.fetchall() == "255":
             answer(conn, location_id, select_npc, next_line)
         else:
             eval(str(cur.fetchall()))
             sql = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
             cur.execute(sql)
+talk(conn, 1)
