@@ -1,3 +1,4 @@
+import random
 def damage(conn, attacker, defender):
     for row in attacker:
         player_hp = (row[0])
@@ -11,19 +12,21 @@ def damage(conn, attacker, defender):
         npc_def = (row[2])
         npc_dodge = (row[3])
         npc_luck = (row[4])
-    while player_hp > 0 or npc_hp >0:
+    while player_hp > 0 or npc_hp >0: #looppaa vuoroja niin kauan kunnes toinen on kuollut
 
-        if random.randint(att_luck, 100) > 50:
-            dealt = att_att*2
+        if random.randint(player_luck, 100) > 50:
+            dealt = player_att*2
         else:
-            dealt = att_att
+            dealt = player_att
 
-        dmg = def_hp - (def_def - dealt)
+        dmg = npc_hp - (npc_def - dealt)
 
-        if random.randint(def_dodge, 100) > 50:
+        if random.randint(npc_dodge, 100) > 50:
             print(defender + "dodged the attack!")
         else:
             sql = "UPDATE '%s' SET hp = '%d' WHERE '%s'.'%s'_id" % (defender, dmg, defender, defender)
+
+
     return
 
 
