@@ -35,6 +35,25 @@ def look_around(conn, location_id):
     get_location(conn, location_id)
     return
 
+#INSPECT ITEM
+def inspect(conn, location_id, item):
+    cur = conn.cursor()
+    if location_id is not None:
+        cur.execute("SELECT inspect FROM item WHERE item_location_id = '" + str(location_id) + "' AND name = '" + item + "'")
+        if cur.rowcount >= 1:
+            print(cur.fetchall()[0][0])
+        else:
+            print("This doest't interest me..")
+
+    elif location_id is None:
+        cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
+        if cur.rowcount >= 1:
+            print(cur.fetchall()[0][0])
+        else:
+            print("This doest't interest me..")
+
+    return location_id
+
 #MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
 def move(conn, location_id, direction):
 

@@ -181,9 +181,9 @@ while x != '0':
         drop = row[4][0]
         eat = row[5][0]
         attack = row[6][0]
-        nothing = row[7][0]
+        inspect = row[7][0]
+        nothing = row[8][0]
 
-        verb_list = [get, drop, eat, nothing]
         noun_list = []
 
         cur.execute("SELECT id FROM dictionary_group")
@@ -225,6 +225,13 @@ while x != '0':
             try:
                 #COMBAT
                 cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (attack, word, nothing, nothing, 'combat.combat(conn, location_id, direct_str)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+            try:
+                #INSPECT
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (inspect, word, nothing, nothing, 'loc_npc_look.inspect(conn, location_id, direct_str)'))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
