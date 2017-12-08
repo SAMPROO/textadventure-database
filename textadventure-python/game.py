@@ -19,6 +19,8 @@ location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
 
+combat.combat(conn, 1, 'figure')
+
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
 while action not in quit:
