@@ -13,7 +13,7 @@
     <SUITE FILE_PATH="coverage/textadventure_python$game.coverage" NAME="game Coverage Results" MODIFIED="1512670889495" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$4.coverage" NAME="4 Coverage Results" MODIFIED="1511952713998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/School/Pelit ja mobiilit/Fysiikka" />
     <SUITE FILE_PATH="coverage/textadventure_python$item_creator.coverage" NAME="item_creator Coverage Results" MODIFIED="1512323916909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/textadventure_python$game_creator.coverage" NAME="game_creator Coverage Results" MODIFIED="1512714455099" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/textadventure_python$game_creator.coverage" NAME="game_creator Coverage Results" MODIFIED="1512715116580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$Demopeli_3_3_5_v2.coverage" NAME="Demopeli_3_3_5_v2 Coverage Results" MODIFIED="1509709085409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/School/Pelit ja mobiilit/PythonP&amp;M" />
     <SUITE FILE_PATH="coverage/textadventure_python$databaseconfig.coverage" NAME="databaseconfig Coverage Results" MODIFIED="1511175935227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$FyTeht01__1_.coverage" NAME="FyTeht01 (1) Coverage Results" MODIFIED="1511959866784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
@@ -177,41 +177,59 @@
       <file leaf-file-name="game_creator.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="116" lean-forward="false" selection-start-line="3" selection-start-column="116" selection-end-line="3" selection-end-column="116" />
+            <state relative-caret-position="221">
+              <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
-                <marker date="1512714455082" expanded="true" signature="590:611" ph="SELECT name item" />
-                <marker date="1512714455082" expanded="true" signature="1253:1499" ph="INSERT INTO item... " />
-                <marker date="1512714455082" expanded="true" signature="1760:1834" ph="SELECT DISTI... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="1931:2005" ph="INSERT INTO dictionary_group... " />
-                <marker date="1512714455082" expanded="true" signature="2289:2322" ph="SELECT name dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="2525:2584" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="2733:2795" ph="SELECT dicti... dictionary" />
-                <marker date="1512714455082" expanded="true" signature="3092:3160" ph="INSERT INTO dictionary... " />
-                <marker date="1512714455082" expanded="true" signature="3326:3417" ph="SELECT item.... item" />
-                <marker date="1512714455082" expanded="true" signature="3509:3548" ph="SELECT item_... item" />
-                <marker date="1512714455082" expanded="true" signature="3509:3564" ph="SELECT item_... item" />
-                <marker date="1512714455082" expanded="true" signature="3636:3682" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="3636:3696" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="3636:3698" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="3636:3700" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="3790:3806" ph="INSERT INTO item... " />
-                <marker date="1512714455082" expanded="true" signature="3790:3858" ph="INSERT INTO item_word_table... " />
-                <marker date="1512714455082" expanded="true" signature="3790:3880" ph="INSERT INTO item_word_table... " />
-                <marker date="1512714455082" expanded="true" signature="4091:4183" ph="SELECT item.... item" />
-                <marker date="1512714455082" expanded="true" signature="4353:4380" ph="SELECT name verb_group" />
-                <marker date="1512714455082" expanded="true" signature="4462:4521" ph="SELECT DISTI... verb_group" />
-                <marker date="1512714455082" expanded="true" signature="4640:4680" ph="INSERT INTO verb_group... " />
-                <marker date="1512714455082" expanded="true" signature="4879:4906" ph="SELECT name dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="5106:5159" ph="SELECT id FR... dictionary_group" />
-                <marker date="1512714455082" expanded="true" signature="5308:5360" ph="SELECT dicti... dictionary" />
-                <marker date="1512714455082" expanded="true" signature="5657:5704" ph="INSERT INTO dictionary... " />
-                <marker date="1512714455082" expanded="true" signature="5917:5951" ph="SELECT locat... location" />
-                <marker date="1512714455082" expanded="true" signature="6033:6108" ph="SELECT DISTI... loca" />
-                <marker date="1512714455082" expanded="true" signature="6295:6322" ph="INSERT INTO location... " />
-                <marker date="1512714455082" expanded="true" signature="6295:6339" ph="INSERT INTO location... " />
-                <marker date="1512714455082" expanded="true" signature="6295:6367" ph="INSERT INTO location... " />
+                <marker date="1512715348374" expanded="true" signature="590:611" ph="SELECT name item" />
+                <marker date="1512715348374" expanded="true" signature="1300:1556" ph="INSERT INTO item... " />
+                <marker date="1512715348374" expanded="true" signature="1823:1897" ph="SELECT DISTI... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="1994:2068" ph="INSERT INTO dictionary_group... " />
+                <marker date="1512715348374" expanded="true" signature="2352:2385" ph="SELECT name dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="2588:2647" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="2796:2858" ph="SELECT dicti... dictionary" />
+                <marker date="1512715348374" expanded="true" signature="3155:3223" ph="INSERT INTO dictionary... " />
+                <marker date="1512715348374" expanded="true" signature="3389:3480" ph="SELECT item.... item" />
+                <marker date="1512715348374" expanded="true" signature="3572:3611" ph="SELECT item_... item" />
+                <marker date="1512715348374" expanded="true" signature="3572:3627" ph="SELECT item_... item" />
+                <marker date="1512715348374" expanded="true" signature="3699:3745" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="3699:3759" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="3699:3761" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="3699:3763" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="3853:3869" ph="INSERT INTO item... " />
+                <marker date="1512715348374" expanded="true" signature="3853:3921" ph="INSERT INTO item_word_table... " />
+                <marker date="1512715348374" expanded="true" signature="3853:3943" ph="INSERT INTO item_word_table... " />
+                <marker date="1512715348374" expanded="true" signature="4154:4246" ph="SELECT item.... item" />
+                <marker date="1512715348374" expanded="true" signature="4416:4443" ph="SELECT name verb_group" />
+                <marker date="1512715348374" expanded="true" signature="4525:4584" ph="SELECT DISTI... verb_group" />
+                <marker date="1512715348374" expanded="true" signature="4703:4743" ph="INSERT INTO verb_group... " />
+                <marker date="1512715348374" expanded="true" signature="4942:4969" ph="SELECT name dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="5169:5222" ph="SELECT id FR... dictionary_group" />
+                <marker date="1512715348374" expanded="true" signature="5371:5423" ph="SELECT dicti... dictionary" />
+                <marker date="1512715348374" expanded="true" signature="5720:5767" ph="INSERT INTO dictionary... " />
+                <marker date="1512715348374" expanded="true" signature="5980:6014" ph="SELECT locat... location" />
+                <marker date="1512715348374" expanded="true" signature="6096:6171" ph="SELECT DISTI... loca" />
+                <marker date="1512715348374" expanded="true" signature="6358:6385" ph="INSERT INTO location... " />
+                <marker date="1512715348374" expanded="true" signature="6358:6402" ph="INSERT INTO location... " />
+                <marker date="1512715348374" expanded="true" signature="6358:6430" ph="INSERT INTO location... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="eat.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/eat.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="101" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="101" />
+              <folding>
+                <marker date="1512715040828" expanded="true" signature="46:94" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="46:119" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="46:135" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="46:136" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="148:210" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="148:223" ph="SELECT name item" />
+                <marker date="1512715040828" expanded="true" signature="148:224" ph="SELECT name item" />
               </folding>
             </state>
           </provider>
@@ -263,6 +281,7 @@
         <option value="$PROJECT_DIR$/databaseconfig.py" />
         <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/combat.py" />
+        <option value="$PROJECT_DIR$/eat.py" />
         <option value="$PROJECT_DIR$/game_creator.py" />
       </list>
     </option>
@@ -461,7 +480,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27677625" sideWeight="0.49114582" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27677625" sideWeight="0.49114582" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -496,13 +515,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://C:/School/Pelit ja mobiilit/PythonP&amp;M/Demopeli_3_3_5_v2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1564">
-          <caret line="92" column="0" lean-forward="false" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="714">
@@ -959,43 +971,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/eat.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="101" lean-forward="false" selection-start-line="2" selection-start-column="11" selection-end-line="2" selection-end-column="101" />
+          <folding>
+            <marker date="1512715040828" expanded="true" signature="46:94" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="46:119" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="46:135" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="46:136" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="148:210" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="148:223" ph="SELECT name item" />
+            <marker date="1512715040828" expanded="true" signature="148:224" ph="SELECT name item" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="116" lean-forward="false" selection-start-line="3" selection-start-column="116" selection-end-line="3" selection-end-column="116" />
+        <state relative-caret-position="221">
+          <caret line="34" column="9" lean-forward="true" selection-start-line="34" selection-start-column="9" selection-end-line="34" selection-end-column="9" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
-            <marker date="1512714455082" expanded="true" signature="590:611" ph="SELECT name item" />
-            <marker date="1512714455082" expanded="true" signature="1253:1499" ph="INSERT INTO item... " />
-            <marker date="1512714455082" expanded="true" signature="1760:1834" ph="SELECT DISTI... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="1931:2005" ph="INSERT INTO dictionary_group... " />
-            <marker date="1512714455082" expanded="true" signature="2289:2322" ph="SELECT name dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="2525:2584" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="2733:2795" ph="SELECT dicti... dictionary" />
-            <marker date="1512714455082" expanded="true" signature="3092:3160" ph="INSERT INTO dictionary... " />
-            <marker date="1512714455082" expanded="true" signature="3326:3417" ph="SELECT item.... item" />
-            <marker date="1512714455082" expanded="true" signature="3509:3548" ph="SELECT item_... item" />
-            <marker date="1512714455082" expanded="true" signature="3509:3564" ph="SELECT item_... item" />
-            <marker date="1512714455082" expanded="true" signature="3636:3682" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="3636:3696" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="3636:3698" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="3636:3700" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="3790:3806" ph="INSERT INTO item... " />
-            <marker date="1512714455082" expanded="true" signature="3790:3858" ph="INSERT INTO item_word_table... " />
-            <marker date="1512714455082" expanded="true" signature="3790:3880" ph="INSERT INTO item_word_table... " />
-            <marker date="1512714455082" expanded="true" signature="4091:4183" ph="SELECT item.... item" />
-            <marker date="1512714455082" expanded="true" signature="4353:4380" ph="SELECT name verb_group" />
-            <marker date="1512714455082" expanded="true" signature="4462:4521" ph="SELECT DISTI... verb_group" />
-            <marker date="1512714455082" expanded="true" signature="4640:4680" ph="INSERT INTO verb_group... " />
-            <marker date="1512714455082" expanded="true" signature="4879:4906" ph="SELECT name dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="5106:5159" ph="SELECT id FR... dictionary_group" />
-            <marker date="1512714455082" expanded="true" signature="5308:5360" ph="SELECT dicti... dictionary" />
-            <marker date="1512714455082" expanded="true" signature="5657:5704" ph="INSERT INTO dictionary... " />
-            <marker date="1512714455082" expanded="true" signature="5917:5951" ph="SELECT locat... location" />
-            <marker date="1512714455082" expanded="true" signature="6033:6108" ph="SELECT DISTI... loca" />
-            <marker date="1512714455082" expanded="true" signature="6295:6322" ph="INSERT INTO location... " />
-            <marker date="1512714455082" expanded="true" signature="6295:6339" ph="INSERT INTO location... " />
-            <marker date="1512714455082" expanded="true" signature="6295:6367" ph="INSERT INTO location... " />
+            <marker date="1512715348374" expanded="true" signature="590:611" ph="SELECT name item" />
+            <marker date="1512715348374" expanded="true" signature="1300:1556" ph="INSERT INTO item... " />
+            <marker date="1512715348374" expanded="true" signature="1823:1897" ph="SELECT DISTI... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="1994:2068" ph="INSERT INTO dictionary_group... " />
+            <marker date="1512715348374" expanded="true" signature="2352:2385" ph="SELECT name dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="2588:2647" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="2796:2858" ph="SELECT dicti... dictionary" />
+            <marker date="1512715348374" expanded="true" signature="3155:3223" ph="INSERT INTO dictionary... " />
+            <marker date="1512715348374" expanded="true" signature="3389:3480" ph="SELECT item.... item" />
+            <marker date="1512715348374" expanded="true" signature="3572:3611" ph="SELECT item_... item" />
+            <marker date="1512715348374" expanded="true" signature="3572:3627" ph="SELECT item_... item" />
+            <marker date="1512715348374" expanded="true" signature="3699:3745" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="3699:3759" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="3699:3761" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="3699:3763" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="3853:3869" ph="INSERT INTO item... " />
+            <marker date="1512715348374" expanded="true" signature="3853:3921" ph="INSERT INTO item_word_table... " />
+            <marker date="1512715348374" expanded="true" signature="3853:3943" ph="INSERT INTO item_word_table... " />
+            <marker date="1512715348374" expanded="true" signature="4154:4246" ph="SELECT item.... item" />
+            <marker date="1512715348374" expanded="true" signature="4416:4443" ph="SELECT name verb_group" />
+            <marker date="1512715348374" expanded="true" signature="4525:4584" ph="SELECT DISTI... verb_group" />
+            <marker date="1512715348374" expanded="true" signature="4703:4743" ph="INSERT INTO verb_group... " />
+            <marker date="1512715348374" expanded="true" signature="4942:4969" ph="SELECT name dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="5169:5222" ph="SELECT id FR... dictionary_group" />
+            <marker date="1512715348374" expanded="true" signature="5371:5423" ph="SELECT dicti... dictionary" />
+            <marker date="1512715348374" expanded="true" signature="5720:5767" ph="INSERT INTO dictionary... " />
+            <marker date="1512715348374" expanded="true" signature="5980:6014" ph="SELECT locat... location" />
+            <marker date="1512715348374" expanded="true" signature="6096:6171" ph="SELECT DISTI... loca" />
+            <marker date="1512715348374" expanded="true" signature="6358:6385" ph="INSERT INTO location... " />
+            <marker date="1512715348374" expanded="true" signature="6358:6402" ph="INSERT INTO location... " />
+            <marker date="1512715348374" expanded="true" signature="6358:6430" ph="INSERT INTO location... " />
           </folding>
         </state>
       </provider>

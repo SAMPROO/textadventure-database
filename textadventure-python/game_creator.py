@@ -28,15 +28,16 @@ while x != '0':
         inspect = str(input("Item inspect description: "))
         attack = int(input("Item attack value: "))
         defence = int(input("Item defence value: "))
-        money = int(input("Item money value: "))
-        addhp = int(input("Item addhp value: "))
+        dodge = int(input("Item money value: "))
+        luck = int(input("Item luck value: "))
         pickable = int(input("Item picable value (1 or 0): "))
         eatable = int(input("Item eatable value (1 or 0): "))
+        addhp = int(input("Item addhp value: "))
         location = int(input("Item location: "))
     
         try:
-            cur.execute("INSERT INTO item (item_id, item.name, description, inspect, attack, defence, money, addhp, pickable, eatable, item_location_id, item_character_id) \
-                                VALUES (NULL, '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, %d, NULL)" % (name, description, inspect, attack, defence, money, addhp, pickable, eatable, location))
+            cur.execute("INSERT INTO item (item_id, item.name, description, inspect, attack, defence, dodge, luck, pickable, eatable, addhp, item_location_id, item_character_id) \
+                                VALUES (NULL, '%s', '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d, NULL)" % (name, description, inspect, attack, defence, dodge, luck, pickable, eatable, addhp, location))
             conn.commit()
             print("SUCCES!!")
         except:
