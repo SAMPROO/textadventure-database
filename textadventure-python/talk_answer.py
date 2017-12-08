@@ -1,5 +1,6 @@
 import loc_npc_look
 import time
+import combat
 #TALK TO AN NPC-------------------------------------------------------------------------------------------------------------------
 def talk(conn,location_id):
     cur = conn.cursor()
@@ -78,21 +79,35 @@ def answer(conn, location_id, select_npc, next_line):
                                 print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
                         if response == 1:
+                                sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine GROUP BY answer_subroutine"
+                                cur.execute(sql)
+                                if cur.fetchall()!= "255":
+                                    eval('cur.fetchall()')
+                                    sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
+                                    cur.execute(sql2)
+                                else:
+                                    sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                                    cur.execute(sql5)
+                                    if cur.rowcount >= 1:
+                                        row5 = cur.fetchall()
+                                        next_line = row5[0][0]
+
+                                        answer(conn, location_id, select_npc, next_line)
+                        elif response == 2:
+                            sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine GROUP BY answer_subroutine"
+                            cur.execute(sql)
+                            if cur.fetchall() != "255":
+                                eval(str(cur.fetchall()))
+                                sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
+                                cur.execute(sql2)
+                            else:
                                 sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
                                 cur.execute(sql5)
                                 if cur.rowcount >= 1:
                                     row5 = cur.fetchall()
-                                    next_line = row5[0][0]
+                                    next_line = row5[1][0]
 
-                                answer(conn, location_id, select_npc, next_line)
-                        elif response == 2:
-                            sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
-                            cur.execute(sql5)
-                            if cur.rowcount >= 1:
-                                row5 = cur.fetchall()
-                                next_line = row5[1][0]
-
-                            answer(conn, location_id, select_npc, next_line)
+                                    answer(conn, location_id, select_npc, next_line)
         else:
             sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
             cur.execute(sql_met)
@@ -102,11 +117,4 @@ def answer(conn, location_id, select_npc, next_line):
             print()
             loc_npc_look.look_around(conn, location_id)
 
-        sql = "SELECT answer_subroutine FROM answer WHERE answer.answer_id = answer_subroutine GROUP BY answer_subroutine"
-        cur.execute(sql)
-        if cur.fetchall() == "255":
-            answer(conn, location_id, select_npc, next_line)
-        else:
-            eval(str(cur.fetchall()))
-            sql = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
-            cur.execute(sql)
+
