@@ -1,3 +1,10 @@
+
+
+#THE GAME CREATOR IS CREATED FOR HELPING WITH THE CREATION OF THE GAMES CONTENT SUCH AS NOUNS AND LOCATION INFORMATION
+#IT IS ALSO MADE TO COMBINE THE FUNCTIONS AND WORDS TO THE DATABASE AUTOMATICALLY, MAKING IT EASIER AND MUCH FASTER
+
+
+
 import databaseconfig as cfg
 import pymysql
 
@@ -171,6 +178,8 @@ while x != '0':
         except pymysql.err.IntegrityError:
             pass
 
+
+    #THIS IS FOR COMBINING ALL THE WORDS WITH ALL DIFFERENT ORDERS TO THE FUNCTIONS
     elif x == '7':
         cur.execute("SELECT id FROM verb_group")
 
