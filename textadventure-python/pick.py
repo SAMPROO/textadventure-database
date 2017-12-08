@@ -24,7 +24,7 @@ def pickup(conn, location_id, item):
             s = "UPDATE item SET item_location_id = NULL WHERE item_location_id = '" + str(location_id) + "'"
         else:
             items = "SELECT name, pickable FROM item WHERE name = '" + item + "' AND item_location_id = '" + str(location_id) + "'"
-            p = "UPDATE item SET item_character_id = 1 WHERE item.name= '" + item + "' AND pickable = TRUE AND item_location_id = '" + str(location_id) + "'"
+            p = "UPDATE item SET item_character_id = 1 WHERE item.name = '" + item + "' AND pickable = TRUE AND item_location_id = '" + str(location_id) + "'"
             s = "UPDATE item SET item_location_id = NULL WHERE item.name = '" + item + "' AND item_location_id = '" + str(location_id) + "'"
 
         cur.execute(items)
