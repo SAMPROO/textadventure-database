@@ -79,10 +79,10 @@ def answer(conn, location_id, select_npc, next_line):
                                 print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
                         if response == 1:
-                                sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine GROUP BY answer_subroutine"
+                                sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
                                 cur.execute(sql)
                                 if cur.fetchall()!= "255":
-                                    eval('cur.fetchall()')
+                                    eval(str(cur.fetchall()))
                                     sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
                                     cur.execute(sql2)
                                 else:
@@ -94,10 +94,10 @@ def answer(conn, location_id, select_npc, next_line):
 
                                         answer(conn, location_id, select_npc, next_line)
                         elif response == 2:
-                            sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine GROUP BY answer_subroutine"
+                            sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
                             cur.execute(sql)
                             if cur.fetchall() != "255":
-                                eval(str(cur.fetchall()))
+                                eval(str(cur.fetchall))
                                 sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
                                 cur.execute(sql2)
                             else:
@@ -116,5 +116,6 @@ def answer(conn, location_id, select_npc, next_line):
             print()
             print()
             loc_npc_look.look_around(conn, location_id)
+
 
 
