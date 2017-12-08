@@ -6,6 +6,7 @@ import inventory
 import pick
 import drop
 import combat
+import eat
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
@@ -18,10 +19,6 @@ location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
 
-
-combat.combat(conn, 1, 'figure')
-
-combat(conn, 1, 'figure')
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
 while action not in quit:
