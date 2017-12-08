@@ -1,7 +1,7 @@
 import databaseconfig as cfg
 import pymysql
 
-conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'])
+conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
 cur = conn.cursor()
 
 
