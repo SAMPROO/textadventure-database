@@ -48,8 +48,8 @@ while x != '0':
         id = cur.fetchall()[0][0] + 1
 
         try:
-            cur.execute(
-                "INSERT INTO dictionary_group (id, dictionary_group.name) VALUES (%d, '%s')" % (id, name))
+            cur.execute("INSERT INTO dictionary_group (id, dictionary_group.name) VALUES (%d, '%s')" % (id, name))
+            cur.execute("INSERT INTO dictionary (id, dictionary) VALUES (%d, '%s')" % (id, name))
             conn.commit()
             print("SUCCES!!")
         except:
@@ -114,12 +114,15 @@ while x != '0':
         cur.execute("SELECT name FROM verb_group")
         for row in cur:
             print("  -" + row[0])
-        cur.execute("SELECT DISTINCT id FROM verb_group ORDER BY id DESC LIMIT 1")
-        id = cur.fetchall()[0][0]
+        cur.execute("SELECT DISTINCT id FROM verb_group ORDER BY id DESC LIMIT 1 OFFSET 1")
+        id = cur.fetchall()[0][0] + 1
         name = str(input("\nVerb name: "))
 
         try:
             cur.execute("INSERT INTO verb_group VALUES (%d, '%s')" % (id, name))
+            cur.execute("INSERT INTO verbs VALUES (%d, '%s')" % (id, name))
+            conn.commit()
+            print("SUCCESS!")
         except pymysql.err.IntegrityError:
             pass
 
@@ -167,6 +170,68 @@ while x != '0':
             cur.execute("INSERT INTO location VALUES (%d, '%s', '%s')" % (id, name, description))
         except pymysql.err.IntegrityError:
             pass
+
+    elif x == '7':
+        cur.execute("SELECT id FROM verb_group")
+
+        row = cur.fetchall()
+
+        get = row[0][0]
+        talk = row[2][0]
+        drop = row[4][0]
+        eat = row[5][0]
+        attack = row[6][0]
+        nothing = row[7][0]
+
+        verb_list = [get, drop, eat, nothing]
+        noun_list = []
+
+        cur.execute("SELECT id FROM dictionary_group")
+
+        for row in cur:
+            noun_list.append(row[0])
+
+        for word in noun_list:
+            try:
+                # GET
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, word, nothing, nothing, 'pick.pickup(conn, location_id, direct_str)'))
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, 4, nothing, word, 'pick.pickup(conn, location_id, indirect_str)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+            try:
+                #EAT
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (eat, word, nothing, nothing, 'eat.eat(conn, location_id, direct_str)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+            try:
+                #DROP
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (drop, word, nothing, nothing, 'drop.drop(conn, location_id, direct_str)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+            try:
+                #TALK
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, nothing, nothing, 'talk_answer.answer(conn, location_id, direct_str, 0)'))
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, 5, nothing, 'talk_answer.answer(conn, location_id, direct_str, 0)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+            try:
+                #COMBAT
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (attack, word, nothing, nothing, 'combat.combat(conn, location_id, direct_str)'))
+                conn.commit()
+                print("SUCCESS!")
+            except pymysql.err.IntegrityError:
+                pass
+
+
+
 
 print("\n\n\nThank you!")
 

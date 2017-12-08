@@ -48,74 +48,76 @@ def answer(conn, location_id, select_npc, next_line):
     cur = conn.cursor()
     sql_id = "SELECT npc_id FROM npc WHERE name = '" + select_npc + "'"
     cur.execute(sql_id)
-    id = cur.fetchall()[0][0]
-    sql_end = "SELECT line_id, met_npc FROM npc INNER JOIN line ON npc.npc_id = line.line_npc_id WHERE line = '0' AND npc.npc_id = '" + str(id) + "'"
-    cur.execute(sql_end)
-    for row in cur.fetchall():
-        if row[0] is not next_line and row[1] is 0:
-    #---------------------
-            if next_line == 0:
-                sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = 1"
-                sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = 1"
-            else:
-                sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
-                sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
-            cur.execute(sql3)
-            for row3 in cur:
-                    if row3[1] is not "0":
-                        print(select_npc.upper() + ": " + row3[1])
-                        print()
-                        cur.execute(sql4)
-                        i = 0
-                        for row4 in cur:
-                            i += 1
-                            print(str(i) + ": " + str(row4[1]))
-                        print()
-                        while True:
-                            try:
-                                response = int(input("--> "))
-                                break
-                            except ValueError:
-                                print("--> Sorry I'm a bit tired.. What I meant to say was: ")
+    if cur.rowcount >= 1:
+        id = cur.fetchall()[0][0]
+        sql_end = "SELECT line_id, met_npc FROM npc INNER JOIN line ON npc.npc_id = line.line_npc_id WHERE line = '0' AND npc.npc_id = '" + str(id) + "'"
+        cur.execute(sql_end)
+        for row in cur.fetchall():
+            if row[0] is not next_line and row[1] is 0:
+        #---------------------
+                if next_line == 0:
+                    sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = 1"
+                    sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = 1"
+                else:
+                    sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
+                    sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
+                cur.execute(sql3)
+                for row3 in cur:
+                        if row3[1] is not "0":
+                            print(select_npc.upper() + ": " + row3[1])
+                            print()
+                            cur.execute(sql4)
+                            i = 0
+                            for row4 in cur:
+                                i += 1
+                                print(str(i) + ": " + str(row4[1]))
+                            print()
+                            while True:
+                                try:
+                                    response = int(input("--> "))
+                                    break
+                                except ValueError:
+                                    print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
-                        if response == 1:
+                            if response == 1:
+                                    sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
+                                    cur.execute(sql)
+                                    if cur.fetchall()!= "255":
+                                        eval(str(cur.fetchall()))
+                                        sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
+                                        cur.execute(sql2)
+                                    else:
+                                        sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                                        cur.execute(sql5)
+                                        if cur.rowcount >= 1:
+                                            row5 = cur.fetchall()
+                                            next_line = row5[0][0]
+
+                                            answer(conn, location_id, select_npc, next_line)
+                            elif response == 2:
                                 sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
                                 cur.execute(sql)
-                                if cur.fetchall()!= "255":
-                                    eval(str(cur.fetchall()))
-                                    sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
+                                if cur.fetchall() != "255":
+                                    eval(str(cur.fetchall))
+                                    sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
                                     cur.execute(sql2)
                                 else:
                                     sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
                                     cur.execute(sql5)
                                     if cur.rowcount >= 1:
                                         row5 = cur.fetchall()
-                                        next_line = row5[0][0]
+                                        next_line = row5[1][0]
 
                                         answer(conn, location_id, select_npc, next_line)
-                        elif response == 2:
-                            sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
-                            cur.execute(sql)
-                            if cur.fetchall() != "255":
-                                eval(str(cur.fetchall))
-                                sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
-                                cur.execute(sql2)
-                            else:
-                                sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
-                                cur.execute(sql5)
-                                if cur.rowcount >= 1:
-                                    row5 = cur.fetchall()
-                                    next_line = row5[1][0]
+            else:
+                sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
+                cur.execute(sql_met)
+                print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
+                time.sleep(1)
+                print()
+                print()
+                loc_npc_look.look_around(conn, location_id)
 
-                                    answer(conn, location_id, select_npc, next_line)
-        else:
-            sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
-            cur.execute(sql_met)
-            print(str(select_npc.upper()) + ": I got nothing to say to you anymore..")
-            time.sleep(1)
-            print()
-            print()
-            loc_npc_look.look_around(conn, location_id)
-
-
+    else:
+        print("Why em I trying to talk to an " + select_npc)
 
