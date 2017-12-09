@@ -1,7 +1,6 @@
 import random
 import loc_npc_look
 import eat
-
 def combat(conn, location_id, npc):
     cur = conn.cursor()
     print("------------------------")
