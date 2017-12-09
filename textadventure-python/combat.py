@@ -1,7 +1,8 @@
 import random
-import move
+import loc_npc_look
+import eat
 
-def combat(conn, location_id, npc, direction):
+def combat(conn, location_id, npc):
     cur = conn.cursor()
     print("------------------------")
     sql = "SELECT hp, attack, defence, dodge, luck FROM character_"
