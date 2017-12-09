@@ -1,6 +1,7 @@
 import random
+import move
 
-def combat(conn, location_id, npc):
+def combat(conn, location_id, npc, direction):
     cur = conn.cursor()
     print("------------------------")
     sql = "SELECT hp, attack, defence, dodge, luck FROM character_"
@@ -27,7 +28,7 @@ def combat(conn, location_id, npc):
             npc_dodge = (row[3])
             npc_luck = (row[4])
 
-        turn = random.randint(1, 5)
+        turn = random.randint(1, 5)#Decides whose turn it is with a 60% chance it's players turn
         if turn <= 3:
 
             player_turn = True
@@ -40,7 +41,7 @@ def combat(conn, location_id, npc):
 
         while player_hp > 0 or npc_hp > 0:
 
-            if player_turn:
+            if player_turn: #Player turn
                 command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run")
 
                 if command == 1: #player attacks
@@ -54,40 +55,43 @@ def combat(conn, location_id, npc):
                         print("The opponent dodged the attack!")
                     else:
                         npc_hp = npc_hp - (npc_def - dealt)
+                        print("You dealt: " + dealt)
+                        print("The enemy has: " + npc_hp + " HP left!")
 
                 if command == 2: #player goes into a defencive formation
                     player_def = player_def + 15
                     player_dodge = player_dodge + 10
-                    player_att = player_att - 10
-                    player_luck = player_luck + 15
+                    player_att = player_att - 15
+                    player_luck = player_luck - 10
+                    print("You raise your defences!")
 
                 if command == 3: #player heals
-                    #tänne heal functio
-                    #eli pitää importtaa eat ja iha perustavalla kutsua sitä
+                    #eat(conn, location_id, item)
                     player_hp = player_hp + 25
+                    print("You healed for 25 HP, your health is now: " + player_hp)
 
-                #if command == 4: #player runs away
-                    #jotain et kutsut move functiota jossa vaan miinustat nykysestä locatiosta 1
-                    #sit sun pitää miettiä miten taistelulle käy jääkö vihun hp samaks vaiko reset jnejne
-            else:
+                if command == 4: #player runs away
+                    move(conn, (location_id - 1), direction)
 
-                if npc_hp < 20:
+            else: #Npc turn
+
+                if npc_hp < 20: #Npc heals
                     print("The opponent heals!")
                     npc_hp = npc_hp + 15
 
                 if random.randint(1, 5) == 1: # 20% chance that npc goes into a defencive formation
                     print("The opponent goes into a defencive formation!")
-                    npc_dodge = npc_dodge + 10
-                    npc_def = npc_def + 15
-                    npc_att = npc_att - 5
-                    npc_luck = npc_luck - 15
-                else:
+                    npc_dodge = npc_dodge + 1
+                    npc_def = npc_def + 3
+                    npc_att = npc_att - 2
+                    npc_luck = npc_luck - 2
+                else: #Npc attacks
                     print("The opponent attacks you!")
-                    if random.randint(npc_luck, 100) > 90:
+                    if random.randint(npc_luck, 100) > 90: #Checks if critical strike hits
                         dealt2 = npc_att*2
                     else:
                         dealt2 = npc_att
-                    if random.randint(player_dodge, 100) > 75:
+                    if random.randint(player_dodge, 100) > 75: #Checks if player dodges the attack
                         print("You dodged the attack!")
                     else:
                         player_hp = player_hp - (player_def - dealt2)
@@ -101,4 +105,5 @@ def combat(conn, location_id, npc):
         print("I can't fight with an " + npc)
 
     return location_id
+combat(conn, 1, Figure, 1)
 
