@@ -1,6 +1,7 @@
 import loc_npc_look
 import time
 import combat
+
 #TALK TO AN NPC-------------------------------------------------------------------------------------------------------------------
 def talk(conn,location_id):
     cur = conn.cursor()
@@ -80,12 +81,15 @@ def answer(conn, location_id, select_npc, next_line):
                                     print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
                             if response == 1:
-                                    sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
+                                    sql = "SELECT answer_subroutine FROM answer WHERE answer.description = answer_subroutine"
                                     cur.execute(sql)
-                                    if cur.fetchall()!= "255":
-                                        eval(str(cur.fetchall()))
-                                        sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
-                                        cur.execute(sql2)
+                                    if cur.rowcount>=1:
+                                        for row in cur.fetchall():
+                                            print(row[0])
+                                    if 'none' not in cur.fetchall():
+                                            combat.combat(conn,location_id, select_npc)
+                                            sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
+                                            cur.execute(sql2)
                                     else:
                                         sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
                                         cur.execute(sql5)
@@ -97,7 +101,7 @@ def answer(conn, location_id, select_npc, next_line):
                             elif response == 2:
                                 sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
                                 cur.execute(sql)
-                                if cur.fetchall() != "255":
+                                if 'none' not in cur.fetchall():
                                     eval(str(cur.fetchall))
                                     sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
                                     cur.execute(sql2)
