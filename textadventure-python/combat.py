@@ -105,5 +105,5 @@ def combat(conn, location_id, npc, direction):
         print("I can't fight with an " + npc)
 
     return location_id
-combat(conn, 1, Figure, 1)
+
 
