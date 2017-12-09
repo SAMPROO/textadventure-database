@@ -81,13 +81,11 @@ def answer(conn, location_id, select_npc, next_line):
                                     print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
                             if response == 1:
-                                    sql = "SELECT answer_subroutine FROM answer WHERE answer.description = answer_subroutine"
+                                    sql = "SELECT answer_subroutine FROM answer WHERE answer.description = answer_subroutine AND answer.description=answer_id"
                                     cur.execute(sql)
-                                    if cur.rowcount>=1:
-                                        for row in cur.fetchall():
-                                            print(row[0])
+                                    print(cur.fetchall())
                                     if 'none' not in cur.fetchall():
-                                            combat.combat(conn,location_id, select_npc)
+                                            eval(str(cur.fetchall()))
                                             sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
                                             cur.execute(sql2)
                                     else:
@@ -124,4 +122,5 @@ def answer(conn, location_id, select_npc, next_line):
 
     else:
         print("Why em I trying to talk to an " + select_npc)
+
 
