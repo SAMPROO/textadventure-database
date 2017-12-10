@@ -41,6 +41,16 @@ def combat(conn, location_id, npc):
 
         while player_hp > 0 or npc_hp > 0:
 
+            sql3 = "SELECT hp FROM character_"
+            cur.execute(sql3)
+            for row in cur:
+                player_hp = (row[0])
+            sql4 = "SELECT hp, attack, defence, dodge, luck FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id \
+                    WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+            cur.execute(sql4)
+            for row in cur:
+                npc_hp = (row[0])
+
             if player_turn: #Player turn
                 command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run")
 
@@ -71,7 +81,7 @@ def combat(conn, location_id, npc):
                     print("You healed for 25 HP, your health is now: " + player_hp)
 
                 if command == 4: #player runs away
-                    move(conn, (location_id - 1), direction)
+                    loc_npc_look.get_location(conn, location_id -1)
 
             else: #Npc turn
 
@@ -98,12 +108,12 @@ def combat(conn, location_id, npc):
 
             player_turn = not player_turn
             npc_turn = not npc_turn
-        sql3 = "UPDATE npc SET npc.hp = '" + npc_hp + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
-        cur.execute(sql3)
-        #conn.commit()?
+        sql5 = "UPDATE npc SET npc.hp = '" + npc_hp + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+        cur.execute(sql5)
+        sql6 = "UPDATE character_ SET character_.hp = '" +player_hp +"'"
     else:
         print("I can't fight with an " + npc)
 
     return location_id
-
+combat(conn, 1, 'Figure')
 
