@@ -1,6 +1,7 @@
 import random
 import loc_npc_look
 import eat
+import game
 def combat(conn, location_id, npc):
     cur = conn.cursor()
     print("------------------------")
@@ -76,9 +77,8 @@ def combat(conn, location_id, npc):
                     print("You raise your defences!")
 
                 if command == 3: #player heals
-                    #eat(conn, location_id, item)
-                    player_hp = player_hp + 25
-                    print("You healed for 25 HP, your health is now: " + player_hp)
+                    eat(conn, location_id, item)
+                    print("You ate, your health is now: " + player_hp)
 
                 if command == 4: #player runs away
                     loc_npc_look.get_location(conn, location_id -1)
