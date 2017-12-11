@@ -9,8 +9,9 @@ def get_location(conn, location_id):
         print("--------------------------")
         print(row[1])
 
-    print_item(conn, location_id)
     print_npc(conn, location_id)
+    print_item(conn, location_id)
+
 
     return location_id
 #PRINT ITEMS--------------------------------------------------------------------------------------------------------------

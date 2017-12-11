@@ -245,7 +245,7 @@ while x != '0':
         eat = row[5][0]
         attack = row[6][0]
         inspect = row[7][0]
-        nothing = row[8][0]
+        nothing = row[9][0]
 
         noun_list = []
 
@@ -253,48 +253,55 @@ while x != '0':
 
         for row in cur:
             noun_list.append(row[0])
+        print(noun_list)
 
         for word in noun_list:
             try:
                 # GET
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, word, nothing, nothing, 'pick.pickup(conn, location_id, direct_str)'))
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, 4, nothing, word, 'pick.pickup(conn, location_id, indirect_str)'))
+                sub = 'pick.pickup(conn, location_id, direct_str)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, word, nothing, nothing, sub))
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (get, 4, nothing, word, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
                 pass
             try:
                 #EAT
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (eat, word, nothing, nothing, 'eat.eat(conn, location_id, direct_str)'))
+                sub = 'eat.eat(conn, location_id, direct_str)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (eat, word, nothing, nothing, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
                 pass
             try:
                 #DROP
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (drop, word, nothing, nothing, 'drop.drop(conn, location_id, direct_str)'))
+                sub = 'drop.drop(conn, location_id, direct_str)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (drop, word, nothing, nothing, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
                 pass
             try:
                 #TALK
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, nothing, nothing, 'talk_answer.answer(conn, location_id, direct_str, 0)'))
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, 5, nothing, 'talk_answer.answer(conn, location_id, direct_str, 0)'))
+                sub = 'talk_answer.answer(conn, location_id, direct_str, 0)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, nothing, nothing, sub))
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (talk, word, 5, nothing, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
                 pass
             try:
                 #COMBAT
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (attack, word, nothing, nothing, 'combat.combat(conn, location_id, direct_str)'))
+                sub = 'combat.combat(conn, location_id, direct_str)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (attack, word, nothing, nothing, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:
                 pass
             try:
                 #INSPECT
-                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (inspect, word, nothing, nothing, 'loc_npc_look.inspect(conn, location_id, direct_str)'))
+                sub = 'loc_npc_look.inspect(conn, location_id, direct_str)'
+                cur.execute("INSERT INTO jump_table VALUES (%d, %d, %d, %d, '%s')" % (inspect, word, nothing, nothing, sub))
                 conn.commit()
                 print("SUCCESS!")
             except pymysql.err.IntegrityError:

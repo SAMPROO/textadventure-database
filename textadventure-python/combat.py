@@ -100,7 +100,8 @@ def combat(conn, location_id, npc):
                     print("You ate, your health is now: " + str(player_hp))
 
                 elif command == '4' or command == 'run': #player runs away
-                    loc_npc_look.get_location(conn, location_id -1)
+                    location_id = location_id - 1
+                    loc_npc_look.get_location(conn, location_id)
                     npc_hp = npc_hp + 100
                     sql9 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
                     cur.execute(sql9)

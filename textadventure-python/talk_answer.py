@@ -62,7 +62,6 @@ def answer(conn, location_id, select_npc, next_line):
                 else:
                     sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
-                print(sql3)
                 cur.execute(sql3)
                 for row3 in cur:
                     if row3[1] is None:
@@ -84,7 +83,6 @@ def answer(conn, location_id, select_npc, next_line):
 
                             if response == 1:
                                 sql5 = "SELECT next_answer_line_id, answer_subroutine FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
-                                print(sql5)
                                 cur.execute(sql5)
                                 if cur.rowcount >= 1:
                                     row5 = cur.fetchall()
