@@ -184,9 +184,9 @@ while x != '0':
         for row in cur:
             print("  -" + str(row))
         print("-------------------------\n")
-        move = input("Move amount: ")
+        move = int(input("Move amount: "))
         voice = input("Voice line: ")
-        cur.execute("INSERT INTO voice VALUES ('%s', '%s')" % (move, voice))
+        cur.execute("INSERT INTO voice VALUES (%d, '%s')" % (move, voice))
         conn.commit()
     elif x == '8':
         print("\nExisting npc----------")
@@ -197,17 +197,9 @@ while x != '0':
 
         name = input("Name: ")
         desc = input("Desc: ")
-        maxhp = input("maxHp: ")
-        met = input("Met: (0 or 1)")
-        loc = input("Location: ")
-        att = input("Attack: ")
-        deff = input("Defence: ")
-        dodge = input("Dodge: ")
-        luck = input("Luck: ")
-        hp = input("Hp: ")
 
         try:
-            cur.execute("INSERT INTO npc VALUES (NULL, '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d)" % (name, desc, maxhp, met, loc, att, deff, dodge, luck, hp))
+            cur.execute("INSERT INTO npc VALUES (NULL, '%s', '%s', 200, 0, NULL, 50, 25, 10, 10, 150)" % (name, desc))
             conn.commit()
         except:
             conn.rollback()
