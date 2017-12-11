@@ -173,7 +173,7 @@ def combat(conn, location_id, npc):
             player_hp = player_hp + 100
             sql10 = "UPDATE character_ SET hp = '" + str(player_hp) + "' WHERE character_id = 1"
             cur.execute(sql10)
-            
+
 
     elif npc == None:
         print("Who do you want to attack?")
