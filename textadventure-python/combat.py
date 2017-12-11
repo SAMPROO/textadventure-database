@@ -42,6 +42,8 @@ def combat(conn, location_id, npc):
 
         while player_hp > 0 or npc_hp > 0:
 
+            x = 1
+
             sql3 = "SELECT hp FROM character_"
             cur.execute(sql3)
             for row in cur:
@@ -92,11 +94,13 @@ def combat(conn, location_id, npc):
                     npc_hp = npc_hp + 15
 
                 if random.randint(1, 5) == 1: # 20% chance that npc goes into a defencive formation
-                    print("The opponent goes into a defencive formation!")
-                    npc_dodge = npc_dodge + 1
-                    npc_def = npc_def + 3
-                    npc_att = npc_att - 2
-                    npc_luck = npc_luck - 2
+                    while x == 1:
+                        npc_dodge = npc_dodge + 10
+                        npc_def = npc_def + 15
+                        npc_att = npc_att - 15
+                        npc_luck = npc_luck - 10
+                        print("The opponent goes into a defencive formation!")
+                        x = x - 1
                 else: #Npc attacks
                     print("The opponent attacks you!")
                     if random.randint(npc_luck, 100) > 90: #Checks if critical strike hits
@@ -109,8 +113,8 @@ def combat(conn, location_id, npc):
                         player_hp = player_hp - (player_def - dealt2)
                         sql8 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
                         cur.execute(sql8)
-            print("You have: " + player_hp + " hitpoints!")
-            print("The enemy has: " + npc_hp + " hitpoints!")
+            print("You have: " + str(player_hp) + " hitpoints!")
+            print("The enemy has: " + str(npc_hp) + " hitpoints!")
             player_turn = not player_turn
             npc_turn = not npc_turn
         sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
