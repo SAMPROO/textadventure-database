@@ -57,7 +57,7 @@ def combat(conn, location_id, npc):
             if player_turn: #Player turn
                 command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run")
 
-                if command == 1: #player attacks
+                if command == '1': #player attacks
 
                     if random.randint(player_luck, 100) > 80: #Checks if player strikes critically
                         dealt = player_att*2
@@ -70,22 +70,25 @@ def combat(conn, location_id, npc):
                         npc_hp = npc_hp - (npc_def - dealt)
                         print("You dealt: " + str(dealt))
                         print("The enemy has: " + str(npc_hp) + " HP left!")
-                        sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+                        sql9 = "SELECT npc.name, npc.npc_location_id FROM npc INNER JOIN location ON npc.npc_location_id = location.'" + str(location_id) +"' AND npc.name = npc.'"+npc+"'"
+                        cur.execute(sql9)
+                        if cur.rowcount >= 1:
+                            sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE npc.name = '"+npc+"' "
                         print(sql7)
                         cur.execute(sql7)
 
-                if command == 2: #player goes into a defencive formation
+                if command == '2': #player goes into a defencive formation
                     player_def = player_def + 15
                     player_dodge = player_dodge + 10
                     player_att = player_att - 15
                     player_luck = player_luck - 10
                     print("You raise your defences!")
 
-                if command == 3: #player heals
+                if command == '3': #player heals
                     eat(conn, location_id, item)
                     print("You ate, your health is now: " + str(player_hp))
 
-                if command == 4: #player runs away
+                if command == '4': #player runs away
                     loc_npc_look.get_location(conn, location_id -1)
 
             else: #Npc turn
