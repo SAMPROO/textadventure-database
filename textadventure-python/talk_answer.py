@@ -57,8 +57,8 @@ def answer(conn, location_id, select_npc, next_line):
             if row[0] is not next_line and row[1] is 0:
         #---------------------
                 if next_line == 0:
-                    sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = 1"
-                    sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = 1"
+                    sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = (SELECT MIN(line_id) FROM line)"
+                    sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = (SELECT MIN(line_id) FROM line)"
                 else:
                     sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
@@ -111,6 +111,8 @@ def answer(conn, location_id, select_npc, next_line):
                                         cur.execute(sql2)
                                         location_id = eval(combat.combat(conn, location_id, select_npc))
                     else:
+                        print(row3[0])
+                        time.sleep(1.5)
                         sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(row3[0]) + "'"
                         cur.execute(sql2)
 

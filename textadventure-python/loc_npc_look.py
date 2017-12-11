@@ -6,6 +6,7 @@ def get_location(conn, location_id):
     cur.execute(sql)
     for row in cur:
         print("-" + row[0] + "-")
+        print("--------------------------")
         print(row[1])
 
     print_item(conn, location_id)
@@ -64,7 +65,7 @@ def move(conn, location_id, direction):
 
     if cur.rowcount >= 1:
         row = cur.fetchall()[0][0]
-        print(row)
+        print(row + "\n")
 
     if direction == None:
         print("Where do you want move? ")
@@ -98,7 +99,7 @@ def move(conn, location_id, direction):
                     print(row[1])
                     return location_id
                 elif row[3] is 1:
-                    print(row[2])
+                    print(row[2] + "\n")
                     get_location(conn, new_location_id)
                     return new_location_id
                 else:
