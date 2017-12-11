@@ -5,7 +5,7 @@ def get_location(conn, location_id):
     sql = "SELECT location_name, description FROM location WHERE location_id='" + str(location_id) + "'"
     cur.execute(sql)
     for row in cur:
-        print (row[0])
+        print("-" + row[0] + "-")
         print(row[1])
 
     print_item(conn, location_id)
@@ -56,7 +56,15 @@ def inspect(conn, location_id, item):
 
 #MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
 def move(conn, location_id, direction):
+    
+    cur = conn.cursor()
+    move.counter += 1
+    voice = "SELECT voice FROM voice WHERE move_counter = '" + str(move.counter) + "'"
+    cur.execute(voice)
 
+    if cur.rowcount >= 1:
+        row = cur.fetchall()[0][0]
+        print(row)
 
     if direction == None:
         print("Where do you want move? ")
@@ -102,6 +110,8 @@ def move(conn, location_id, direction):
             print("You cant go that way")
             return location_id
     return
+move.counter = 0
+
 
 def quit():
     print("Thank you for playing!")

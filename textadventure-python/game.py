@@ -19,6 +19,7 @@ location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
 verb = 100000000
+voice = 0
 
 
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
