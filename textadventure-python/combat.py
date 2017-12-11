@@ -162,7 +162,7 @@ def combat(conn, location_id, npc):
             cur.execute(sql11)
             row = cur.fetchall()[0]
             print(row[0])
-            sql12 = "UPDATE location SET needed_item = NULL, no_item = NULL, yes_item = NULL WHERE location_id = '"+ row[0] + "'"
+            sql12 = "UPDATE location SET needed_item = NULL, no_item = NULL, yes_item = NULL WHERE location_id = '"+ str(row[0]) + "'"
             cur.execute(sql12)
             sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
             cur.execute(sql8)
