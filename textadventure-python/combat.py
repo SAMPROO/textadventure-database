@@ -102,6 +102,12 @@ def combat(conn, location_id, npc):
                 elif command == '4': #player runs away
                     break
                     loc_npc_look.get_location(conn, location_id -1)
+                    npc_hp = npc_hp + 100
+                    sql9 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+                    cur.execute(sql9)
+                    player_hp = player_hp + 100
+                    sql10 = "UPDATE character_ SET hp = '" + str(player_hp) +"' WHERE character_id = 1"
+                    cur.execute(sql10)
                 else:
                     print("ERROR")
 
@@ -146,12 +152,28 @@ def combat(conn, location_id, npc):
             #print("NPC: " + str(npc_hp))
             player_turn = not player_turn
             npc_turn = not npc_turn
-        sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
-        cur.execute(sql5)
-        sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
-        cur.execute(sql6)
-        sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
-        cur.execute(sql8)
+        if npc_hp <= 0:
+            sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+            cur.execute(sql5)
+            sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
+            cur.execute(sql6)
+            sql11 ="SELECT location_id FROM location INNER JOIN npc ON location.location_id = npc.npc_location_id"
+            cur.execute(sql11)
+            row = cur.fetchall()[0]
+            print(row[0])
+            sql12 = "UPDATE location SET needed_item = NULL, no_item = NULL, yes_item = NULL WHERE location_id = '"+ row[0] + "'"
+            cur.execute(sql12)
+            sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
+            cur.execute(sql8)
+        elif player_hp <= 0:
+            loc_npc_look.get_location(conn, location_id - 1)
+            npc_hp = npc_hp + 100
+            sql9 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+            cur.execute(sql9)
+            player_hp = player_hp + 100
+            sql10 = "UPDATE character_ SET hp = '" + str(player_hp) + "' WHERE character_id = 1"
+            cur.execute(sql10)
+            
 
     elif npc == None:
         print("Who do you want to attack?")
