@@ -166,6 +166,7 @@ def combat(conn, location_id, npc):
             sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
             cur.execute(sql8)
         elif player_hp <= 0:
+            print("You Died")
             loc_npc_look.get_location(conn, location_id - 1)
             npc_hp = npc_hp + 100
             sql9 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
