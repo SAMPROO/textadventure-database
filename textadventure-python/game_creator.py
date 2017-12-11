@@ -20,7 +20,8 @@ print("\nHello! Let's add words to the databases")
 
 while x != '0':
 
-    print("\nPress:\n---------------------\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n7: Add voice\n8: Add npc\n0: Quit\n")
+    print("\nPress:\n---------------------"
+          "\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n7: Add voice\n8: Add npc\n9: Line and Answer\n0: Quit\n")
 
     x = str(input("--> "))
     if x == '1':
@@ -216,6 +217,21 @@ while x != '0':
         except:
             conn.rollback()
             print("Something went wrong...")
+
+    elif x == '9':
+        cur.execute("SELECT npc_id, name FROM npc")
+        print("Select npc:\n")
+        for row in cur:
+            print("  -" + str(row[0]) + ": " + str(row[1]))
+
+        npc = input("\n NPC id: ")
+        line = input("Line nro " + i + ": ")
+
+        cur.execute("INSERT INTO line VALUES(%d, NULL, '%s', NULL ) " % (npc, line))
+        print("\nAnswers\n")
+
+        asnwer1 = input("Answer 1: ")
+        asnwer2 = input("Answer 2: ")
 
     #THIS IS FOR COMBINING ALL THE WORDS WITH ALL DIFFERENT ORDERS TO THE FUNCTIONS
     elif x == '69':

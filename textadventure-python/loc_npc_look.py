@@ -82,6 +82,7 @@ def move(conn, location_id, direction):
               direction ON neighbours.neighbour_direction_id = direction_id WHERE \
               direction.direction_id ='" + direction + "' OR direction.direction = '" + direction + "' AND \
               from_location_id = '" + str(location_id) + "'"
+        print(sql)
         cur.execute(sql)
 
         if cur.rowcount >= 1:
@@ -104,8 +105,8 @@ def move(conn, location_id, direction):
                 else:
                     print("ERROR")
             else:
-                print("You cant go that way")
-                return location_id
+                get_location(conn, new_location_id)
+                return new_location_id
         else:
             print("You cant go that way")
             return location_id
