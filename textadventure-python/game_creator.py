@@ -20,7 +20,7 @@ print("\nHello! Let's add words to the databases")
 
 while x != '0':
 
-    print("\nPress:\n---------------------\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n0: Quit\n")
+    print("\nPress:\n---------------------\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n7: Add voice\n0: Quit\n")
 
     x = str(input("--> "))
     if x == '1':
@@ -177,10 +177,18 @@ while x != '0':
             cur.execute("INSERT INTO location VALUES (%d, '%s', '%s')" % (id, name, description))
         except pymysql.err.IntegrityError:
             pass
+    elif x == '7':
+        print("\nExisting voice----------")
+        cur.execute("SELECT id, voice FROM voice")
+        for row in cur:
+            print("  -" + str(row[0]))
 
+        voice = input("--> ")
+        cur.execute("INSERT INTO voice VALUES (NUll, '%s')" % (voice))
+        conn.commit()
 
     #THIS IS FOR COMBINING ALL THE WORDS WITH ALL DIFFERENT ORDERS TO THE FUNCTIONS
-    elif x == '7':
+    elif x == '69':
         cur.execute("SELECT id FROM verb_group")
 
         row = cur.fetchall()
