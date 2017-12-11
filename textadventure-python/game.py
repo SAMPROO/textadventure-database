@@ -5,19 +5,21 @@ import talk_answer
 import inventory
 import pick
 import drop
-import combat
 import eat
+import combat
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
+print("x")
 cur = conn.cursor()
-
+combat.combat(conn, 1, 'figure')
 quit = ['exit', 'quit', 'end', 'finnish']
 
 #STARTING VALUES------------------------------------------------------------------------------------------------------------
 location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
+
 
 
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
@@ -120,7 +122,6 @@ while action not in quit:
         subroutine = row[0]
 
     #RUNS THE FUNCTION
-    print(subroutine)
     try:
         location_id = eval(subroutine)
     except NameError:
