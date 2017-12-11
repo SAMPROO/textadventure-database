@@ -74,7 +74,6 @@ def combat(conn, location_id, npc):
                         cur.execute(sql9)
                         if cur.rowcount >= 1:
                             sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE npc.name = '"+npc+"' "
-                        print(sql7)
                         cur.execute(sql7)
 
                 if command == '2': #player goes into a defencive formation
@@ -122,7 +121,11 @@ def combat(conn, location_id, npc):
             print("NPC: " + str(npc_hp))
             player_turn = not player_turn
             npc_turn = not npc_turn
-        sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+        sql10 = "SELECT npc.name, npc.npc_location_id FROM npc INNER JOIN location ON npc.npc_location_id = location.'" + str(
+            location_id) + "' AND npc.name = npc.'" + npc + "'"
+        cur.execute(sql10)
+        if cur.rowcount >= 1:
+            sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
         cur.execute(sql5)
         sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
         cur.execute(sql6)
