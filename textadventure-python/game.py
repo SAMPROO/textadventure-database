@@ -11,7 +11,7 @@ import combat
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
 cur = conn.cursor()
-combat.combat(conn, 1, 'figure')
+combat.combat(conn, 1, 'enemy')
 quit = ['exit', 'quit', 'end', 'finnish']
 
 #STARTING VALUES------------------------------------------------------------------------------------------------------------

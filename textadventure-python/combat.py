@@ -1,6 +1,8 @@
 import random
 import loc_npc_look
 import eat
+import time
+
 
 def combat(conn, location_id, npc):
     x = 1
@@ -53,11 +55,12 @@ def combat(conn, location_id, npc):
             cur.execute(sql4)
             for row in cur:
                 npc_hp = (row[0])
-            print("You have: " + str(player_hp)+ " hitpoints")
-            print("The opponent has: " + str(npc_hp) + " hitpoints\n")
+            print("\n--------------------------\nYou have: " + str(player_hp)+ " hitpoints")
+            print("The opponent has: " + str(npc_hp) + " hitpoints\n--------------------------\n")
 
             if player_turn: #Player turn
-                command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run")
+                print("It's your turn...")
+                command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run\n --> ")
 
                 if command == '1': #player attacks
 
@@ -76,12 +79,13 @@ def combat(conn, location_id, npc):
                             npc_hp = npc_hp + (npc_def - dealt)
 
                             print("You dealt: " + str(dealt))
+                            print("The enemy absorbed: " + str(npc_def) + " damage.")
                             print("The enemy has: " + str(npc_hp) + " HP left!")
 
                             sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
                             cur.execute(sql7)
                         else:
-                            print("Attack blocked")
+                            print("Your attack was fully absorbed.")
 
                 elif command == '2': #player goes into a defencive formation
                     player_def = player_def + 15
@@ -96,11 +100,14 @@ def combat(conn, location_id, npc):
                     print("You ate, your health is now: " + str(player_hp))
 
                 elif command == '4': #player runs away
+                    break
                     loc_npc_look.get_location(conn, location_id -1)
                 else:
                     print("ERROR")
 
             else: #Npc turn
+                print("It's NPC's turn...\n")
+                time.sleep(1)
 
                 if npc_hp < 20: #Npc heals
                     print("The opponent heals!")
@@ -116,12 +123,10 @@ def combat(conn, location_id, npc):
                         x = x - 1
                 else: #Npc attacks
                     print("The opponent attacks you! ")
-                    if random.randint(npc_luck, 100) > 90: #Checks if critical strike hits
+                    if random.randint(npc_luck, 100) > 99: #Checks if critical strike hits
                         dealt2 = npc_att*2
-                        print("npc crit dmg: " + str(dealt2))
                     else:
                         dealt2 = npc_att
-                        print("npc dmg: " + str(dealt2))
 
                     if random.randint(player_dodge, 100) > 99: #Checks if player dodges the attack
                         print("You dodged the attack!")
@@ -132,12 +137,13 @@ def combat(conn, location_id, npc):
                             player_hp = player_hp + (player_def - dealt2)
                             sql8 = "UPDATE character_ SET hp = '" + str(player_hp) +"'"
                             cur.execute(sql8)
-                            print("The enemy dealt:" + str(dealt2) + " damage!")
+                            print("The enemy dealt: " + str(dealt2) + " damage!")
+                            print("You absorbed: " + str(player_def) + " damage.")
                         else:
-                            print("You blocked the attack")
+                            print("You absorbed the attack")
 
-            print("Player: " + str(player_hp))
-            print("NPC: " + str(npc_hp))
+            #print("Player: " + str(player_hp))
+            #print("NPC: " + str(npc_hp))
             player_turn = not player_turn
             npc_turn = not npc_turn
         sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
