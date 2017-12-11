@@ -1,7 +1,7 @@
 import random
 import loc_npc_look
 import eat
-import game
+
 def combat(conn, location_id, npc):
     cur = conn.cursor()
     print("------------------------")
@@ -111,9 +111,13 @@ def combat(conn, location_id, npc):
         sql5 = "UPDATE npc SET npc.hp = '" + npc_hp + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
         cur.execute(sql5)
         sql6 = "UPDATE character_ SET character_.hp = '" +player_hp +"'"
+
+    elif npc == None:
+        print("Who do you want to attack?")
+        npc = input("--> ")
+        combat(conn, location_id, npc)
     else:
         print("I can't fight with an " + npc)
 
     return location_id
-combat(conn, 1, 'Figure')
 
