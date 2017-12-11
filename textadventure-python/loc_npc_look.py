@@ -56,7 +56,7 @@ def inspect(conn, location_id, item):
 
 #MOVE BETWEEN LOCATIONS--------------------------------------------------------------------------------------------------------
 def move(conn, location_id, direction):
-    
+
     cur = conn.cursor()
     move.counter += 1
     voice = "SELECT voice FROM voice WHERE move_counter = '" + str(move.counter) + "'"

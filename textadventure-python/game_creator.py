@@ -179,12 +179,13 @@ while x != '0':
             pass
     elif x == '7':
         print("\nExisting voice----------")
-        cur.execute("SELECT id, voice FROM voice")
+        cur.execute("SELECT move_counter, voice FROM voice")
         for row in cur:
-            print("  -" + str(row[0]))
-
-        voice = input("--> ")
-        cur.execute("INSERT INTO voice VALUES (NUll, '%s')" % (voice))
+            print("  -" + str(row))
+        print("-------------------------\n")
+        move = input("Move amount: ")
+        voice = input("Voice line: ")
+        cur.execute("INSERT INTO voice VALUES ('%s', '%s')" % (move, voice))
         conn.commit()
 
     #THIS IS FOR COMBINING ALL THE WORDS WITH ALL DIFFERENT ORDERS TO THE FUNCTIONS
