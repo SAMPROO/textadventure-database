@@ -75,7 +75,7 @@ while action not in quit:
     #IF WORD IN LISTS CHANGE IT TO THE WORDS ID AND ADD IT TO ORDER LIST
     for word in input_string:
         for character in ["!","?",",","."]:
-            word=word.replace(character,"")
+            word = word.replace(character,"")
 
         if word in verbs_list and verb == None:
             sql = "SELECT id FROM verbs WHERE verbs = '" + word + "'"
