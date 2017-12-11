@@ -74,6 +74,7 @@ def move(conn, location_id, direction):
               direction ON neighbours.neighbour_direction_id = direction_id WHERE \
               direction.direction_id ='" + direction + "' OR direction.direction = '" + direction + "' AND \
               from_location_id = '" + str(location_id) + "'"
+        print(sql)
         cur.execute(sql)
 
         if cur.rowcount >= 1:
@@ -83,16 +84,21 @@ def move(conn, location_id, direction):
             check_item = "SELECT needed_item, no_item, yes_item, item_character_id FROM location INNER JOIN item ON needed_item = item_id WHERE location_id = '" + str(new_location_id) + "'"
             cur.execute(check_item)
 
-            row = cur.fetchall()[0]
-            if row[3] is None:
-                print(row[1])
-                return location_id
-            elif row[3] is 1:
-                print(row[2])
-                get_location(conn, new_location_id)
-                return new_location_id
+            if cur.rowcount >= 1:
+
+                row = cur.fetchall()[0]
+                if row[3] is None:
+                    print(row[1])
+                    return location_id
+                elif row[3] is 1:
+                    print(row[2])
+                    get_location(conn, new_location_id)
+                    return new_location_id
+                else:
+                    print("ERROR")
             else:
-                print("ERROR")
+                print("You cant go that way")
+                return location_id
         else:
             print("You cant go that way")
             return location_id
