@@ -60,9 +60,9 @@ def combat(conn, location_id, npc):
 
             if player_turn: #Player turn
                 print("It's your turn...")
-                command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run\n --> ")
+                command = input("\nAction:\n1) Attack\n2) Defence\n3) Heal\n4) Run\n -->\n ")
 
-                if command == '1': #player attacks
+                if command == '1' or command == 'attack': #player attacks
 
                     if random.randint(player_luck, 100) > 80: #Checks if player strikes critically
                         dealt = player_att*2
@@ -87,20 +87,19 @@ def combat(conn, location_id, npc):
                         else:
                             print("Your attack was fully absorbed.")
 
-                elif command == '2': #player goes into a defencive formation
+                elif command == '2' or command == 'defence': #player goes into a defencive formation
                     player_def = player_def + 15
                     player_dodge = player_dodge + 10
                     player_att = player_att - 15
                     player_luck = player_luck - 10
                     print("You raise your defences!")
 
-                elif command == '3': #player heals
+                elif command == '3' or command == 'heal': #player heals
                     item = None
                     eat.eat(conn, location_id, item)
                     print("You ate, your health is now: " + str(player_hp))
 
-                elif command == '4': #player runs away
-                    break
+                elif command == '4' or command == 'run': #player runs away
                     loc_npc_look.get_location(conn, location_id -1)
                     npc_hp = npc_hp + 100
                     sql9 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
@@ -108,6 +107,7 @@ def combat(conn, location_id, npc):
                     player_hp = player_hp + 100
                     sql10 = "UPDATE character_ SET hp = '" + str(player_hp) +"' WHERE character_id = 1"
                     cur.execute(sql10)
+                    break
                 else:
                     print("ERROR")
 
