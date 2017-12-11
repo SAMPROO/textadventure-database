@@ -61,34 +61,41 @@ def combat(conn, location_id, npc):
 
                     if random.randint(player_luck, 100) > 80: #Checks if player strikes critically
                         dealt = player_att*2
+                        print("Player crit dmg: " + str(dealt))
                     else:
                         dealt = player_att
+                        print("Player dmg: " + str(dealt))
 
                     if random.randint(npc_dodge, 100) > 95: #Checks if npc dodges the attack
                         print("The opponent dodged the attack!")
                     else:
-                        npc_hp = npc_hp - (npc_def - dealt)
-                        print("You dealt: " + str(dealt))
-                        print("The enemy has: " + str(npc_hp) + " HP left!")
-                        sql9 = "SELECT npc.name, npc.npc_location_id FROM npc INNER JOIN location ON npc.npc_location_id = location.'" + str(location_id) +"' AND npc.name = npc.'"+npc+"'"
-                        cur.execute(sql9)
-                        if cur.rowcount >= 1:
-                            sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE npc.name = '"+npc+"' "
-                        cur.execute(sql7)
+                        if dealt > npc_def:
 
-                if command == '2': #player goes into a defencive formation
+                            npc_hp = npc_hp + (npc_def - dealt)
+
+                            print("You dealt: " + str(dealt))
+                            print("The enemy has: " + str(npc_hp) + " HP left!")
+
+                            sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+                            cur.execute(sql7)
+                        else:
+                            print("Attack blocked")
+
+                elif command == '2': #player goes into a defencive formation
                     player_def = player_def + 15
                     player_dodge = player_dodge + 10
                     player_att = player_att - 15
                     player_luck = player_luck - 10
                     print("You raise your defences!")
 
-                if command == '3': #player heals
+                elif command == '3': #player heals
                     eat(conn, location_id, item)
                     print("You ate, your health is now: " + str(player_hp))
 
-                if command == '4': #player runs away
+                elif command == '4': #player runs away
                     loc_npc_look.get_location(conn, location_id -1)
+                else:
+                    print("ERROR")
 
             else: #Npc turn
 
@@ -96,7 +103,7 @@ def combat(conn, location_id, npc):
                     print("The opponent heals!")
                     npc_hp = npc_hp + 15
 
-                if random.randint(1, 5) == 1: # 20% chance that npc goes into a defencive formation
+                elif random.randint(1, 5) == 1: # 20% chance that npc goes into a defencive formation
                     while x == 1:
                         npc_dodge = npc_dodge + 10
                         npc_def = npc_def + 15
@@ -108,15 +115,24 @@ def combat(conn, location_id, npc):
                     print("The opponent attacks you! ")
                     if random.randint(npc_luck, 100) > 90: #Checks if critical strike hits
                         dealt2 = npc_att*2
+                        print("npc crit dmg: " + str(dealt2))
                     else:
                         dealt2 = npc_att
+                        print("npc dmg: " + str(dealt2))
+
                     if random.randint(player_dodge, 100) > 99: #Checks if player dodges the attack
                         print("You dodged the attack!")
+
                     else:
-                        player_hp = player_hp - (player_def - dealt2)
-                        sql8 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
-                        cur.execute(sql8)
-                        print("The enemy dealt:" + str(dealt2) + " damage!")
+
+                        if dealt2 > player_def:
+                            player_hp = player_hp + (player_def - dealt2)
+                            sql8 = "UPDATE character_ SET hp = '" + str(player_hp) +"'"
+                            cur.execute(sql8)
+                            print("The enemy dealt:" + str(dealt2) + " damage!")
+                        else:
+                            print("You blocked the attack")
+
             print("Player: " + str(player_hp))
             print("NPC: " + str(npc_hp))
             player_turn = not player_turn
