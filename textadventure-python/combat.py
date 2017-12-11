@@ -29,6 +29,7 @@ def combat(conn, location_id, npc):
             npc_dodge = (row[3])
             npc_luck = (row[4])
 
+#----------------------------------------------------------------
         turn = random.randint(1, 5)#Decides whose turn it is with a 60% chance it's players turn
         if turn <= 3:
 
@@ -39,16 +40,14 @@ def combat(conn, location_id, npc):
 
             player_turn = False
             npc_turn = True
-
+#------------------------------------------------------------------
         while player_hp > 0 or npc_hp > 0:
-
             x = 1
-
             sql3 = "SELECT hp FROM character_"
             cur.execute(sql3)
             for row in cur:
                 player_hp = (row[0])
-            sql4 = "SELECT hp, attack, defence, dodge, luck FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id \
+            sql4 = "SELECT hp FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id \
                     WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
             cur.execute(sql4)
             for row in cur:
