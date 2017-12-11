@@ -20,7 +20,7 @@ print("\nHello! Let's add words to the databases")
 
 while x != '0':
 
-    print("\nPress:\n---------------------\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n7: Add voice\n0: Quit\n")
+    print("\nPress:\n---------------------\n1: Add item\n2: Add noun synonyms\n3: Connect existing nouns to synonyms (automatic)\n4: Add verb\n5: Add verb synonyms\n6: Add locations\n7: Add voice\n8: Add npc\n0: Quit\n")
 
     x = str(input("--> "))
     if x == '1':
@@ -177,6 +177,7 @@ while x != '0':
             cur.execute("INSERT INTO location VALUES (%d, '%s', '%s')" % (id, name, description))
         except pymysql.err.IntegrityError:
             pass
+
     elif x == '7':
         print("\nExisting voice----------")
         cur.execute("SELECT move_counter, voice FROM voice")
@@ -187,6 +188,42 @@ while x != '0':
         voice = input("Voice line: ")
         cur.execute("INSERT INTO voice VALUES ('%s', '%s')" % (move, voice))
         conn.commit()
+    elif x == '8':
+        print("\nExisting npc----------")
+        cur.execute("SELECT name, description FROM npc")
+        for row in cur:
+            print("  -" + str(row))
+        print("-------------------------\n")
+
+        name = input("Name: ")
+        desc = input("Desc: ")
+        maxhp = input("maxHp: ")
+        met = input("Met: (0 or 1)")
+        loc = input("Location: ")
+        att = input("Attack: ")
+        deff = input("Defence: ")
+        dodge = input("Dodge: ")
+        luck = input("Luck: ")
+        hp = input("Hp: ")
+
+        try:
+            cur.execute("INSERT INTO npc VALUES (NULL, '%s', '%s', %d, %d, %d, %d, %d, %d, %d, %d)" % (name, desc, maxhp, met, loc, att, deff, dodge, luck, hp))
+            conn.commit()
+        except:
+            conn.rollback()
+            print("Something went wrong...")
+
+        cur.execute("SELECT DISTINCT id FROM dictionary_group ORDER BY id DESC LIMIT 1 OFFSET 2")
+        id = cur.fetchall()[0][0] + 1
+
+        try:
+            cur.execute("INSERT INTO dictionary_group (id, dictionary_group.name) VALUES (%d, '%s')" % (id, name))
+            cur.execute("INSERT INTO dictionary (id, dictionary) VALUES (%d, '%s')" % (id, name))
+            conn.commit()
+            print("SUCCES!!")
+        except:
+            conn.rollback()
+            print("Something went wrong...")
 
     #THIS IS FOR COMBINING ALL THE WORDS WITH ALL DIFFERENT ORDERS TO THE FUNCTIONS
     elif x == '69':
