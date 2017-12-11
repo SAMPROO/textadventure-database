@@ -86,11 +86,12 @@ def move(conn, location_id, direction):
             row = cur.fetchall()[0]
             if row[3] is None:
                 print(row[1])
+                return location_id
             elif row[3] is 1:
                 print(row[2])
-                get_location(conn, location_id)
+                get_location(conn, new_location_id)
+                return new_location_id
             else:
                 print("ERROR")
         else:
             print("You cant go that way")
-        return location_id
