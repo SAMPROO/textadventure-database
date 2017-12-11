@@ -10,9 +10,7 @@ import combat
 
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
-print("x")
 cur = conn.cursor()
-combat.combat(conn, 1, 'figure')
 quit = ['exit', 'quit', 'end', 'finnish']
 
 #STARTING VALUES------------------------------------------------------------------------------------------------------------
@@ -127,5 +125,5 @@ while action not in quit:
     except NameError:
         print("I don't understand")
         pass
-
+combat.combat(conn, 1, 'figure')
 conn.rollback()
