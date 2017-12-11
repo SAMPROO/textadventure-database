@@ -43,8 +43,6 @@ def pickup(conn, location_id, item):
         else:
             print("There's no " + item + "'s to be seen")
 
-
-
     return location_id
 
 

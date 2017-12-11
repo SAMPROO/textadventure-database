@@ -33,7 +33,7 @@ def print_npc(conn, location_id):
 def look_around(conn, location_id):
     print("-"*80)
     get_location(conn, location_id)
-    return
+    return location_id
 
 #INSPECT ITEM
 def inspect(conn, location_id, item):
@@ -74,12 +74,23 @@ def move(conn, location_id, direction):
               direction ON neighbours.neighbour_direction_id = direction_id WHERE \
               direction.direction_id ='" + direction + "' OR direction.direction = '" + direction + "' AND \
               from_location_id = '" + str(location_id) + "'"
-
         cur.execute(sql)
+
         if cur.rowcount >= 1:
-            for row in cur.fetchall():
-                location_id = row[0]
+            row = cur.fetchall()[0]
+            new_location_id = row[0]
+
+            check_item = "SELECT needed_item, no_item, yes_item, item_character_id FROM location INNER JOIN item ON needed_item = item_id WHERE location_id = '" + str(new_location_id) + "'"
+            cur.execute(check_item)
+
+            row = cur.fetchall()[0]
+            if row[3] is None:
+                print(row[1])
+            elif row[3] is 1:
+                print(row[2])
                 get_location(conn, location_id)
+            else:
+                print("ERROR")
         else:
             print("You cant go that way")
         return location_id
