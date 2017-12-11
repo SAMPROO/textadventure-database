@@ -11,7 +11,7 @@ import combat
 #CONNECTION TO DATABASE------------------------------------------------------------------------------------------------------
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
 cur = conn.cursor()
-#combat.combat(conn, 1, 'enemy')
+
 quit = ['exit', 'quit', 'end', 'finnish']
 
 #STARTING VALUES------------------------------------------------------------------------------------------------------------
@@ -24,6 +24,7 @@ action = ""
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
 while action not in quit:
+
 
 
 
@@ -75,7 +76,6 @@ while action not in quit:
     for word in input_string:
         for character in ["!","?",",","."]:
             word = word.replace(character,"")
-        print("" + word)
 
         if word in verbs_list and verb == None:
             sql = "SELECT id FROM verbs WHERE verbs = '" + word + "'"
