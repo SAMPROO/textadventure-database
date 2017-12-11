@@ -28,14 +28,26 @@ def pickup(conn, location_id, item):
             s = "UPDATE item SET item_location_id = NULL WHERE item.name = '" + item + "' AND item_location_id = '" + str(location_id) + "'"
 
         cur.execute(items)
-        if cur.rowcount >= 1:
+        if cur.rowcount > 1:
             row1 = cur.fetchall()
 
             if row1[0][1] is 1:
                 cur.execute(items)
-                print("Picked up:")
+                print("Picked all up:")
                 for row in cur:
-                        print("  -" + row[0])
+                    print("  -" + row[0])
+            else:
+                print("The " + row1[0][0] + " is not pickable")
+            cur.execute(p)
+            cur.execute(s)
+
+        elif cur.rowcount == 1:
+            row1 = cur.fetchall()
+            if row1[0][1] is 1:
+                cur.execute(items)
+                row = cur.fetchall()[0]
+                print("Picked up:")
+                print("  -" + row[0])
             else:
                 print("The " + row1[0][0] + " is not pickable")
             cur.execute(p)

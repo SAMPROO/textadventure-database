@@ -95,3 +95,5 @@ def move(conn, location_id, direction):
                 print("ERROR")
         else:
             print("You cant go that way")
+            return location_id
+    return
