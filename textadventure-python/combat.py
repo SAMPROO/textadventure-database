@@ -53,6 +53,8 @@ def combat(conn, location_id, npc):
             cur.execute(sql4)
             for row in cur:
                 npc_hp = (row[0])
+            print("You have: " + str(player_hp)+ " hitpoints")
+            print("The opponent has: " + str(npc_hp) + " hitpoints\n")
 
             if player_turn: #Player turn
                 command = input("\nAction:\n1) Attack\n2) Defencive formation\n3) Heal\n4) Run")
@@ -89,7 +91,8 @@ def combat(conn, location_id, npc):
                     print("You raise your defences!")
 
                 elif command == '3': #player heals
-                    eat(conn, location_id, item)
+                    item = None
+                    eat.eat(conn, location_id, item)
                     print("You ate, your health is now: " + str(player_hp))
 
                 elif command == '4': #player runs away
@@ -137,10 +140,12 @@ def combat(conn, location_id, npc):
             print("NPC: " + str(npc_hp))
             player_turn = not player_turn
             npc_turn = not npc_turn
-        #sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
-        #cur.execute(sql5)
-        #sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
-        #cur.execute(sql6)
+        sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+        cur.execute(sql5)
+        sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
+        cur.execute(sql6)
+        sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
+        cur.execute(sql8)
 
     elif npc == None:
         print("Who do you want to attack?")
