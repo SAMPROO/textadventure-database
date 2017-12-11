@@ -42,7 +42,7 @@ def combat(conn, location_id, npc):
             player_turn = False
             npc_turn = True
 #------------------------------------------------------------------
-        while player_hp > 0 or npc_hp > 0:
+        while player_hp > 0 and npc_hp > 0:
 
             sql3 = "SELECT hp FROM character_"
             cur.execute(sql3)
@@ -71,6 +71,7 @@ def combat(conn, location_id, npc):
                         print("You dealt: " + str(dealt))
                         print("The enemy has: " + str(npc_hp) + " HP left!")
                         sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+                        print(sql7)
                         cur.execute(sql7)
 
                 if command == 2: #player goes into a defencive formation
@@ -102,12 +103,12 @@ def combat(conn, location_id, npc):
                         print("The opponent goes into a defencive formation!")
                         x = x - 1
                 else: #Npc attacks
-                    print("The opponent attacks you ")
+                    print("The opponent attacks you! ")
                     if random.randint(npc_luck, 100) > 90: #Checks if critical strike hits
                         dealt2 = npc_att*2
                     else:
                         dealt2 = npc_att
-                    if random.randint(player_dodge, 100) > 75: #Checks if player dodges the attack
+                    if random.randint(player_dodge, 100) > 99: #Checks if player dodges the attack
                         print("You dodged the attack!")
                     else:
                         player_hp = player_hp - (player_def - dealt2)
