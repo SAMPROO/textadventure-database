@@ -23,7 +23,7 @@ action = ""
 
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
-while action not in quit:n
+while action not in quit:
 
 
 
