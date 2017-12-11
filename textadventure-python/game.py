@@ -18,12 +18,12 @@ quit = ['exit', 'quit', 'end', 'finnish']
 location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
-
+verb = 100000000
 
 
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
-while action not in quit:
+while verb is not quit:
 
 
 

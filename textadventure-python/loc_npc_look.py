@@ -102,3 +102,6 @@ def move(conn, location_id, direction):
             print("You cant go that way")
             return location_id
     return
+
+def quit():
+    print("Thank you for playing!")
