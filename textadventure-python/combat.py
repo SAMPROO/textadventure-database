@@ -137,14 +137,10 @@ def combat(conn, location_id, npc):
             print("NPC: " + str(npc_hp))
             player_turn = not player_turn
             npc_turn = not npc_turn
-        sql10 = "SELECT npc.name, npc.npc_location_id FROM npc INNER JOIN location ON npc.npc_location_id = location.'" + str(
-            location_id) + "' AND npc.name = npc.'" + npc + "'"
-        cur.execute(sql10)
-        if cur.rowcount >= 1:
-            sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
-        cur.execute(sql5)
-        sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
-        cur.execute(sql6)
+        #sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
+        #cur.execute(sql5)
+        #sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
+        #cur.execute(sql6)
 
     elif npc == None:
         print("Who do you want to attack?")
