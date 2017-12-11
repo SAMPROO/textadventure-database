@@ -62,12 +62,14 @@ def combat(conn, location_id, npc):
                     else:
                         dealt = player_att
 
-                    if random.randint(npc_dodge, 100) > 85: #Checks if npc dodges the attack
+                    if random.randint(npc_dodge, 100) > 95: #Checks if npc dodges the attack
                         print("The opponent dodged the attack!")
                     else:
                         npc_hp = npc_hp - (npc_def - dealt)
                         print("You dealt: " + dealt)
                         print("The enemy has: " + npc_hp + " HP left!")
+                        sql7 = "UPDATE npc SET npc.hp = '" + str(npc_hp) +"' WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+                        cur.execute(sql7)
 
                 if command == 2: #player goes into a defencive formation
                     player_def = player_def + 15
@@ -105,12 +107,16 @@ def combat(conn, location_id, npc):
                         print("You dodged the attack!")
                     else:
                         player_hp = player_hp - (player_def - dealt2)
-
+                        sql8 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
+                        cur.execute(sql8)
+            print("You have: " + player_hp + " hitpoints!")
+            print("The enemy has: " + npc_hp + " hitpoints!")
             player_turn = not player_turn
             npc_turn = not npc_turn
-        sql5 = "UPDATE npc SET npc.hp = '" + npc_hp + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+        sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "'  WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
         cur.execute(sql5)
-        sql6 = "UPDATE character_ SET character_.hp = '" +player_hp +"'"
+        sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
+        cur.execute(sql6)
 
     elif npc == None:
         print("Who do you want to attack?")
