@@ -60,8 +60,9 @@ def answer(conn, location_id, select_npc, next_line):
                     sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = 1"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = 1"
                 else:
-                    sql3 = "SELECT line_id, line, line_npc_id FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
+                    sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
+                print(sql3)
                 cur.execute(sql3)
                 for row3 in cur:
                     if row3[1] is None:
@@ -82,40 +83,37 @@ def answer(conn, location_id, select_npc, next_line):
                                     print("--> Sorry I'm a bit tired.. What I meant to say was: ")
 
                             if response == 1:
-                                    sql = "SELECT answer_subroutine FROM answer WHERE answer.description = answer_subroutine AND answer.description=answer_id"
-                                    cur.execute(sql)
-                                    print(cur.fetchall())
-                                    if None not in cur.fetchall():
-                                            eval(str(cur.fetchall()))
-                                            sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '"+ str(select_npc) +"'"
-                                            cur.execute(sql2)
-                                    else:
-                                        sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
-                                        cur.execute(sql5)
-                                        if cur.rowcount >= 1:
-                                            row5 = cur.fetchall()
-                                            next_line = row5[0][0]
+                                sql5 = "SELECT next_answer_line_id, answer_subroutine FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                                print(sql5)
+                                cur.execute(sql5)
+                                if cur.rowcount >= 1:
+                                    row5 = cur.fetchall()
+                                    if row5[0][1] is None:
+                                        next_line = row5[0][0]
 
-                                            answer(conn, location_id, select_npc, next_line)
+                                        answer(conn, location_id, select_npc, next_line)
+                                    else:
+                                        sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(row3[0]) + "'"
+                                        cur.execute(sql2)
+                                        location_id = eval(combat.combat(conn, location_id, select_npc))
+
                             elif response == 2:
-                                sql = "SELECT answer_subroutine FROM answer WHERE answer_id = answer_subroutine"
-                                cur.execute(sql)
-                                if None not in cur.fetchall():
-                                    eval(str(cur.fetchall))
-                                    sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(select_npc) + "'"
-                                    cur.execute(sql2)
-                                else:
-                                    sql5 = "SELECT next_answer_line_id FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
-                                    cur.execute(sql5)
-                                    if cur.rowcount >= 1:
-                                        row5 = cur.fetchall()
+                                sql5 = "SELECT next_answer_line_id, answer_subroutine FROM answer WHERE previous_answer_line_id = '" + str(row4[0]) + "'"
+                                cur.execute(sql5)
+                                if cur.rowcount >= 1:
+                                    row5 = cur.fetchall()
+                                    if row5[1][1] is None:
                                         next_line = row5[1][0]
 
                                         answer(conn, location_id, select_npc, next_line)
+                                    else:
+                                        sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(row3[0]) + "'"
+                                        cur.execute(sql2)
+                                        location_id = eval(combat.combat(conn, location_id, select_npc))
                     else:
                         sql2 = "UPDATE npc SET met_npc = TRUE WHERE npc_id = '" + str(row3[0]) + "'"
                         cur.execute(sql2)
-                        
+
                         location_id = eval(combat.combat(conn, location_id, select_npc))
             else:
                 sql_met = "UPDATE npc SET met_npc = met_npc + 1 WHERE npc_id = '" + str(id) + "'"
