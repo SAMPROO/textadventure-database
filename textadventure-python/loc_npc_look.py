@@ -79,7 +79,7 @@ def move(conn, location_id, direction):
     if cur.rowcount >= 1:
         row = cur.fetchall()[0][0]
         print(row + "\n")
-        time.sleep(4)
+        time.sleep(1.7)
 
     if direction == None:
         print("Where do you want move? ")
