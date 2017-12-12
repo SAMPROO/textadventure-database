@@ -54,7 +54,9 @@ def inspect(conn, location_id, item):
 
             cur.execute("SELECT inspect FROM item WHERE item_location_id = '" + str(location_id) + "' AND name = '" + item + "'")
             if cur.rowcount >= 1:
-                print(cur.fetchall()[0][0])
+                for row in cur:
+                    for line in textwrap.wrap(row[0][0], 72):
+                        print(line)
             else:
                 cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
                 if cur.rowcount >= 1:

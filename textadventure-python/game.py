@@ -12,21 +12,16 @@ import combat
 conn = pymysql.connect(cfg.mysql['host'], cfg.mysql['user'], cfg.mysql['password'], cfg.mysql['db'], cfg.mysql['port'])
 cur = conn.cursor()
 
-quit = ['exit', 'quit', 'end', 'finnish']
-
 #STARTING VALUES------------------------------------------------------------------------------------------------------------
 location_id = 1
 loc_npc_look.look_around(conn, location_id)
 action = ""
 verb = 100000000
-voice = 0
 
 
 #MAIN LOOP-----------------------------------------------------------------------------------------------------------------
 #TEMPORARY LOOP
 while verb is not quit:
-
-
 
 
     #PARSER--------------------------------------------------------------------
@@ -111,10 +106,12 @@ while verb is not quit:
 
     order = [verb, direct, preposition, indirect]
 
+
     #CHANGE None VALUES TO 255
     for n, i in enumerate(order):
         if i == None:
             order[n] = 255
+
 
     #CHECKING IF GIVEN WORD ORDER HAS A SUBROUTINE IN THE DATABASE
     sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \
