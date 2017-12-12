@@ -47,7 +47,7 @@ def answer(conn, location_id, select_npc, next_line):
     #ENDS CONVO WHEN LAST LINE = "0"
     #-------------------
     cur = conn.cursor()
-    sql_id = "SELECT npc_id FROM npc WHERE name = '" + select_npc + "'"
+    sql_id = "SELECT npc_id FROM npc WHERE name = '" + str(select_npc) + "'"
     cur.execute(sql_id)
     if cur.rowcount >= 1:
         id = cur.fetchall()[0][0]
