@@ -154,6 +154,7 @@ def combat(conn, location_id, npc):
             player_turn = not player_turn
             npc_turn = not npc_turn
         if npc_hp <= 0:
+            print("The enemy died!")
             sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
             cur.execute(sql5)
             sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
