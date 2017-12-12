@@ -1,3 +1,5 @@
+import time
+import textwrap
 
 #GETTING LOCATION AFTER MOVEMENT----------------------------------------------------------------------------------------------
 def get_location(conn, location_id):
@@ -7,7 +9,8 @@ def get_location(conn, location_id):
     for row in cur:
         print("-" + row[0] + "-")
         print("--------------------------")
-        print(row[1])
+        for line in textwrap.wrap(row[1], 72):
+            print(line)
 
     print_npc(conn, location_id)
     print_item(conn, location_id)
@@ -40,19 +43,24 @@ def look_around(conn, location_id):
 #INSPECT ITEM
 def inspect(conn, location_id, item):
     cur = conn.cursor()
-    if location_id is not None:
-        cur.execute("SELECT inspect FROM item WHERE item_location_id = '" + str(location_id) + "' AND name = '" + item + "'")
-        if cur.rowcount >= 1:
-            print(cur.fetchall()[0][0])
-        else:
-            print("This doest't interest me..")
 
-    elif location_id is None:
-        cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
-        if cur.rowcount >= 1:
-            print(cur.fetchall()[0][0])
-        else:
-            print("This doest't interest me..")
+    if item == None:
+
+        print("What do you want to inspect?")
+        item = input("--> ")
+        inspect(conn, location_id, item)
+
+    else:
+
+            cur.execute("SELECT inspect FROM item WHERE item_location_id = '" + str(location_id) + "' AND name = '" + item + "'")
+            if cur.rowcount >= 1:
+                print(cur.fetchall()[0][0])
+            else:
+                cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
+                if cur.rowcount >= 1:
+                    print(cur.fetchall()[0][0])
+                else:
+                    print("\nThis doest't interest me..")
 
     return location_id
 
@@ -60,13 +68,16 @@ def inspect(conn, location_id, item):
 def move(conn, location_id, direction):
 
     cur = conn.cursor()
+
     move.counter += 1
+
     voice = "SELECT voice FROM voice WHERE move_counter = '" + str(move.counter) + "'"
     cur.execute(voice)
 
     if cur.rowcount >= 1:
         row = cur.fetchall()[0][0]
         print(row + "\n")
+        time.sleep(4)
 
     if direction == None:
         print("Where do you want move? ")
@@ -101,6 +112,7 @@ def move(conn, location_id, direction):
                     return location_id
                 elif row[3] is 1:
                     print(row[2] + "\n")
+                    time.sleep(2)
                     get_location(conn, new_location_id)
                     return new_location_id
                 else:
