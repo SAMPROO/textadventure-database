@@ -111,7 +111,7 @@ def move(conn, location_id, direction):
                 row = cur.fetchall()[0]
                 if row[3] is None:
                     print(row[1])
-                    return location_id
+                    return new_location_id
                 elif row[3] is 1:
                     print(row[2] + "\n")
                     time.sleep(2)
@@ -125,7 +125,7 @@ def move(conn, location_id, direction):
         else:
             print("You cant go that way")
             return location_id
-    return
+
 move.counter = 0
 
 

@@ -18,9 +18,9 @@ def combat(conn, location_id, npc):
         player_dodge = (row[3])
         player_luck = (row[4])
 
-
     sql2 = "SELECT hp, attack, defence, dodge, luck FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id \
             WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
+    print(sql2)
     cur.execute(sql2)
 
     if cur.rowcount >= 1:
@@ -57,10 +57,11 @@ def combat(conn, location_id, npc):
                 npc_hp = (row[0])
             print("\n--------------------------\nYou have: " + str(player_hp)+ " hitpoints")
             print("The opponent has: " + str(npc_hp) + " hitpoints\n--------------------------\n")
+            time.sleep(1)
 
             if player_turn: #Player turn
                 print("It's your turn...")
-                command = input("\nAction:\n1) Attack\n2) Defence\n3) Heal\n4) Run\n -->\n ")
+                command = input("\nAction:\n1) Attack\n2) Defence\n3) Heal\n4) Run\n\n--> ")
 
                 if command == '1' or command == 'attack': #player attacks
 
@@ -95,9 +96,13 @@ def combat(conn, location_id, npc):
                     print("You raise your defences!")
 
                 elif command == '3' or command == 'heal': #player heals
+                    '''
                     item = None
                     eat.eat(conn, location_id, item)
                     print("You ate, your health is now: " + str(player_hp))
+                    '''
+                    print("To heal you need to buy The Orphanage Food Store DLC")
+                    print("For only 99.99$")
 
                 elif command == '4' or command == 'run': #player runs away
                     location_id = location_id - 1
@@ -114,9 +119,10 @@ def combat(conn, location_id, npc):
 
             else: #Npc turn
                 print("It's NPC's turn...\n")
-                time.sleep(1)
+                time.sleep(1.5)
 
                 if npc_hp < 20: #Npc heals
+                    time.sleep(1)
                     print("The opponent heals!")
                     npc_hp = npc_hp + 15
 
@@ -126,9 +132,11 @@ def combat(conn, location_id, npc):
                         npc_def = npc_def + 15
                         npc_att = npc_att - 15
                         npc_luck = npc_luck - 10
+                        time.sleep(1)
                         print("The opponent goes into a defencive formation!")
                         x = x - 1
                 else: #Npc attacks
+                    time.sleep(1)
                     print("The opponent attacks you! ")
                     if random.randint(npc_luck, 100) > 99: #Checks if critical strike hits
                         dealt2 = npc_att*2
@@ -136,6 +144,7 @@ def combat(conn, location_id, npc):
                         dealt2 = npc_att
 
                     if random.randint(player_dodge, 100) > 99: #Checks if player dodges the attack
+                        time.sleep(1)
                         print("You dodged the attack!")
 
                     else:
@@ -145,6 +154,7 @@ def combat(conn, location_id, npc):
                             sql8 = "UPDATE character_ SET hp = '" + str(player_hp) +"'"
                             cur.execute(sql8)
                             print("The enemy dealt: " + str(dealt2) + " damage!")
+                            time.sleep(1)
                             print("You absorbed: " + str(player_def) + " damage.")
                         else:
                             print("You absorbed the attack")
@@ -154,7 +164,7 @@ def combat(conn, location_id, npc):
             player_turn = not player_turn
             npc_turn = not npc_turn
         if npc_hp <= 0:
-            print("The enemy died!")
+            print(npc + " died!")
             sql5 = "UPDATE npc SET npc.hp = '" + str(npc_hp) + "' WHERE npc.name = '" + npc + "' "
             cur.execute(sql5)
             sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
@@ -183,7 +193,7 @@ def combat(conn, location_id, npc):
         npc = input("--> ")
         combat(conn, location_id, npc)
     else:
-        print("I can't fight with an " + npc)
+        print("I can't fight with the " + npc)
 
     return location_id
 
