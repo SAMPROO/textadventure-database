@@ -20,7 +20,6 @@ def combat(conn, location_id, npc):
 
     sql2 = "SELECT hp, attack, defence, dodge, luck FROM npc INNER JOIN location ON npc.npc_location_id = location.location_id \
             WHERE location.location_id = '" + str(location_id) + "' AND npc.name = '" + str(npc) + "'"
-    print(sql2)
     cur.execute(sql2)
 
     if cur.rowcount >= 1:

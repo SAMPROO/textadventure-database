@@ -57,16 +57,16 @@ def answer(conn, location_id, select_npc, next_line):
             if row[0] is not next_line and row[1] is 0:
         #---------------------
                 if next_line == 0:
-                    sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = (SELECT MIN(line_id) FROM line)"
+                    sql3 = "SELECT MIN(line_id), line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.name = '" + select_npc + "'"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = (SELECT MIN(line_id) FROM line)"
                 else:
                     sql3 = "SELECT line, line_subroutine FROM line INNER JOIN npc ON line.line_npc_id = npc.npc_id WHERE npc.npc_id = '" + str(id) + "' AND line_id = '" + str(next_line) + "'"
                     sql4 = "SELECT previous_answer_line_id, description, next_answer_line_id FROM answer WHERE answer.previous_answer_line_id = '" + str(next_line) + "'"
                 cur.execute(sql3)
                 for row3 in cur:
-                    if row3[1] is None:
-                        if row3[0] is not "0":
-                            print(select_npc.upper() + ": " + row3[0])
+                    if row3[2] is None:
+                        if row3[1] is not "0":
+                            print(select_npc.upper() + ": " + row3[1])
                             print()
                             cur.execute(sql4)
                             i = 0
