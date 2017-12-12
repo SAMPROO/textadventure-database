@@ -10,11 +10,11 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/textadventure_python$game.coverage" NAME="game Coverage Results" MODIFIED="1513038522377" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/textadventure_python$game.coverage" NAME="game Coverage Results" MODIFIED="1513039380032" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$combat.coverage" NAME="combat Coverage Results" MODIFIED="1512976364938" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$4.coverage" NAME="4 Coverage Results" MODIFIED="1511952713998" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/School/Pelit ja mobiilit/Fysiikka" />
     <SUITE FILE_PATH="coverage/textadventure_python$item_creator.coverage" NAME="item_creator Coverage Results" MODIFIED="1512323916909" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/textadventure_python$game_creator.coverage" NAME="game_creator Coverage Results" MODIFIED="1513037995241" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/textadventure_python$game_creator.coverage" NAME="game_creator Coverage Results" MODIFIED="1513038905924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$Demopeli_3_3_5_v2.coverage" NAME="Demopeli_3_3_5_v2 Coverage Results" MODIFIED="1509709085409" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="C:/School/Pelit ja mobiilit/PythonP&amp;M" />
     <SUITE FILE_PATH="coverage/textadventure_python$databaseconfig.coverage" NAME="databaseconfig Coverage Results" MODIFIED="1511175935227" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/textadventure_python$FyTeht01__1_.coverage" NAME="FyTeht01 (1) Coverage Results" MODIFIED="1511959866784" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/Downloads" />
@@ -35,22 +35,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-38">
-              <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+            <state relative-caret-position="255">
+              <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-                <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-                <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-                <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-                <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-                <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-                <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-                <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-                <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
+                <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+                <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+                <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+                <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+                <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+                <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+                <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+                <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+                <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
               </folding>
             </state>
           </provider>
@@ -59,19 +59,19 @@
       <file leaf-file-name="loc_npc_look.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/loc_npc_look.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="62" column="29" lean-forward="false" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+            <state relative-caret-position="319">
+              <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
-                <marker date="1513038102815" expanded="true" signature="228:320" ph="SELECT locat... location" />
-                <marker date="1513038102815" expanded="true" signature="798:878" ph="SELECT descr... item" />
-                <marker date="1513038102815" expanded="true" signature="1138:1220" ph="SELECT npc.d... npc" />
-                <marker date="1513038102815" expanded="true" signature="1815:1917" ph="SELECT inspe... item" />
-                <marker date="1513038102815" expanded="true" signature="2165:2243" ph="SELECT inspe... item" />
-                <marker date="1513038102815" expanded="true" signature="2651:2697" ph="SELECT voice... voice" />
-                <marker date="1513038102815" expanded="true" signature="2651:2723" ph="SELECT voice... voice" />
-                <marker date="1513038102815" expanded="true" signature="3008:3078" ph="SELECT direc... direction" />
-                <marker date="1513038102815" expanded="true" signature="3690:3852" ph="SELECT neede... location" />
+                <marker date="1513039327804" expanded="true" signature="228:320" ph="SELECT locat... location" />
+                <marker date="1513039327804" expanded="true" signature="798:878" ph="SELECT descr... item" />
+                <marker date="1513039327804" expanded="true" signature="1138:1220" ph="SELECT npc.d... npc" />
+                <marker date="1513039327804" expanded="true" signature="1780:1882" ph="SELECT inspe... item" />
+                <marker date="1513039327804" expanded="true" signature="2010:2088" ph="SELECT inspe... item" />
+                <marker date="1513039327804" expanded="true" signature="2512:2558" ph="SELECT voice... voice" />
+                <marker date="1513039327804" expanded="true" signature="2512:2584" ph="SELECT voice... voice" />
+                <marker date="1513039327804" expanded="true" signature="2869:2939" ph="SELECT direc... direction" />
+                <marker date="1513039327804" expanded="true" signature="3551:3713" ph="SELECT neede... location" />
               </folding>
             </state>
           </provider>
@@ -80,27 +80,49 @@
       <file leaf-file-name="talk_answer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/talk_answer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+            <state relative-caret-position="1853">
+              <caret line="111" column="38" lean-forward="false" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1513024689109" expanded="true" signature="243:333" ph="SELECT npc_i... npc" />
-                <marker date="1513024689109" expanded="true" signature="640:697" ph="SELECT name npc" />
-                <marker date="1513024689109" expanded="true" signature="1761:1817" ph="SELECT npc_i... npc" />
-                <marker date="1513024689109" expanded="true" signature="1922:2055" ph="SELECT line_... npc" />
-                <marker date="1513024689109" expanded="true" signature="2271:2409" ph="SELECT line,... line" />
-                <marker date="1513024689109" expanded="true" signature="2271:2440" ph="SELECT line,... line" />
-                <marker date="1513024689109" expanded="true" signature="2410:2439" ph="SELECT MIN(l... line" />
-                <marker date="1513024689109" expanded="true" signature="2470:2617" ph="SELECT previ... answer" />
-                <marker date="1513024689109" expanded="true" signature="2587:2616" ph="SELECT MIN(l... line" />
-                <marker date="1513024689109" expanded="true" signature="2669:2831" ph="SELECT line_... line" />
-                <marker date="1513024689109" expanded="true" signature="2861:3001" ph="SELECT previ... answer" />
-                <marker date="1513024689109" expanded="true" signature="3954:4066" ph="SELECT next_... answer" />
-                <marker date="1513024689109" expanded="true" signature="4532:4599" ph="UPDATE npc S... " />
-                <marker date="1513024689109" expanded="true" signature="4853:4965" ph="SELECT next_... answer" />
-                <marker date="1513024689109" expanded="true" signature="5431:5498" ph="UPDATE npc S... " />
-                <marker date="1513024689109" expanded="true" signature="5800:5867" ph="UPDATE npc S... " />
-                <marker date="1513024689109" expanded="true" signature="6046:6115" ph="UPDATE npc S... " />
+                <marker date="1513038602355" expanded="true" signature="243:333" ph="SELECT npc_i... npc" />
+                <marker date="1513038602355" expanded="true" signature="640:697" ph="SELECT name npc" />
+                <marker date="1513038602355" expanded="true" signature="1660:6459" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="1761:1822" ph="SELECT npc_i... npc" />
+                <marker date="1513038602355" expanded="true" signature="1873:6387" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="1927:2060" ph="SELECT line_... npc" />
+                <marker date="1513038602355" expanded="true" signature="2125:6387" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="2181:6005" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="2247:2623" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="2276:2414" ph="SELECT line,... line" />
+                <marker date="1513038602355" expanded="true" signature="2276:2445" ph="SELECT line,... line" />
+                <marker date="1513038602355" expanded="true" signature="2415:2444" ph="SELECT MIN(l... line" />
+                <marker date="1513038602355" expanded="true" signature="2475:2622" ph="SELECT previ... answer" />
+                <marker date="1513038602355" expanded="true" signature="2592:2621" ph="SELECT MIN(l... line" />
+                <marker date="1513038602355" expanded="true" signature="2645:3007" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="2674:2836" ph="SELECT line_... line" />
+                <marker date="1513038602355" expanded="true" signature="2866:3006" ph="SELECT previ... answer" />
+                <marker date="1513038602355" expanded="true" signature="3074:6005" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3114:5667" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3161:5667" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3393:3500" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3576:3871" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3613:3721" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3918:4768" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="3959:4071" ph="SELECT next_... answer" />
+                <marker date="1513038602355" expanded="true" signature="4176:4768" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="4293:4446" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="4488:4768" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="4537:4604" ph="UPDATE npc S... " />
+                <marker date="1513038602355" expanded="true" signature="4817:5667" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="4858:4970" ph="SELECT next_... answer" />
+                <marker date="1513038602355" expanded="true" signature="5075:5667" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="5192:5345" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="5387:5667" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="5436:5503" ph="UPDATE npc S... " />
+                <marker date="1513038602355" expanded="true" signature="5693:6005" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="5805:5872" ph="UPDATE npc S... " />
+                <marker date="1513038602355" expanded="true" signature="6023:6387" ph="..." />
+                <marker date="1513038602355" expanded="true" signature="6051:6120" ph="UPDATE npc S... " />
               </folding>
             </state>
           </provider>
@@ -118,7 +140,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pick.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pick.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pick.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
@@ -153,23 +175,26 @@
       <file leaf-file-name="combat.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/combat.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1751">
+            <state relative-caret-position="1700">
               <caret line="103" column="63" lean-forward="false" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <marker date="1513015623887" expanded="true" signature="178:233" ph="SELECT hp, a... character_" />
-                <marker date="1513015623887" expanded="true" signature="1350:1375" ph="SELECT hp FR... character_" />
-                <marker date="1513015623887" expanded="true" signature="3126:3202" ph="UPDATE npc S... " />
-                <marker date="1513015623887" expanded="true" signature="4203:4279" ph="UPDATE npc S... " />
-                <marker date="1513015623887" expanded="true" signature="4397:4470" ph="UPDATE chara... " />
-                <marker date="1513015623887" expanded="true" signature="5911:5961" ph="UPDATE chara... " />
-                <marker date="1513015623887" expanded="true" signature="6478:6554" ph="UPDATE npc S... " />
-                <marker date="1513015623887" expanded="true" signature="6607:6668" ph="UPDATE chara... " />
-                <marker date="1513015623887" expanded="true" signature="6720:6813" ph="SELECT locat... location" />
-                <marker date="1513015623887" expanded="true" signature="6929:7036" ph="UPDATE locat... " />
-                <marker date="1513015623887" expanded="true" signature="7089:7169" ph="UPDATE npc S... " />
-                <marker date="1513015623887" expanded="true" signature="7345:7421" ph="UPDATE npc S... " />
-                <marker date="1513015623887" expanded="true" signature="7515:7589" ph="UPDATE chara... " />
+                <marker date="1513038602354" expanded="true" signature="178:233" ph="SELECT hp, a... character_" />
+                <marker date="1513038602354" expanded="true" signature="711:7656" ph="..." />
+                <marker date="1513038602354" expanded="true" signature="1350:1375" ph="SELECT hp FR... character_" />
+                <marker date="1513038602354" expanded="true" signature="3126:3202" ph="UPDATE npc S... " />
+                <marker date="1513038602354" expanded="true" signature="4203:4279" ph="UPDATE npc S... " />
+                <marker date="1513038602354" expanded="true" signature="4397:4470" ph="UPDATE chara... " />
+                <marker date="1513038602354" expanded="true" signature="5911:5961" ph="UPDATE chara... " />
+                <marker date="1513038602354" expanded="true" signature="6457:7025" ph="..." />
+                <marker date="1513038602354" expanded="true" signature="6478:6554" ph="UPDATE npc S... " />
+                <marker date="1513038602354" expanded="true" signature="6607:6668" ph="UPDATE chara... " />
+                <marker date="1513038602354" expanded="true" signature="6720:6813" ph="SELECT locat... location" />
+                <marker date="1513038602354" expanded="true" signature="6929:7025" ph="UPDATE locat... " />
+                <marker date="1513038602354" expanded="true" signature="7264:7656" ph="..." />
+                <marker date="1513038602354" expanded="true" signature="7380:7456" ph="UPDATE npc S... " />
+                <marker date="1513038602354" expanded="true" signature="7550:7624" ph="UPDATE chara... " />
+                <marker date="1513038602354" expanded="true" signature="7680:7791" ph="..." />
               </folding>
             </state>
           </provider>
@@ -178,8 +203,8 @@
       <file leaf-file-name="game_creator.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game_creator.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="252" column="0" lean-forward="true" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+            <state relative-caret-position="187">
+              <caret line="250" column="0" lean-forward="true" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
               <folding>
                 <element signature="e#240#268#0" expanded="true" />
                 <marker date="1513016742963" expanded="true" signature="889:910" ph="SELECT name item" />
@@ -331,6 +356,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -342,7 +368,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -496,11 +521,11 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.32979852" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34040296" sideWeight="0.4890625" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34040296" sideWeight="0.4890625" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3997879" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -537,15 +562,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-            <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-            <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-            <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
+            <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+            <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+            <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+            <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
           </folding>
         </state>
       </provider>
@@ -556,15 +581,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-            <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-            <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-            <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
+            <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+            <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+            <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+            <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
           </folding>
         </state>
       </provider>
@@ -575,15 +600,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-            <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-            <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-            <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
+            <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+            <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+            <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+            <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
           </folding>
         </state>
       </provider>
@@ -594,15 +619,15 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-            <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-            <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-            <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
+            <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+            <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+            <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+            <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
           </folding>
         </state>
       </provider>
@@ -840,7 +865,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
           <caret line="165" column="0" lean-forward="false" selection-start-line="165" selection-start-column="0" selection-end-line="165" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -863,66 +887,99 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/combat.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1751">
+        <state relative-caret-position="1700">
           <caret line="103" column="63" lean-forward="false" selection-start-line="103" selection-start-column="63" selection-end-line="103" selection-end-column="63" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <marker date="1513015623887" expanded="true" signature="178:233" ph="SELECT hp, a... character_" />
-            <marker date="1513015623887" expanded="true" signature="1350:1375" ph="SELECT hp FR... character_" />
-            <marker date="1513015623887" expanded="true" signature="3126:3202" ph="UPDATE npc S... " />
-            <marker date="1513015623887" expanded="true" signature="4203:4279" ph="UPDATE npc S... " />
-            <marker date="1513015623887" expanded="true" signature="4397:4470" ph="UPDATE chara... " />
-            <marker date="1513015623887" expanded="true" signature="5911:5961" ph="UPDATE chara... " />
-            <marker date="1513015623887" expanded="true" signature="6478:6554" ph="UPDATE npc S... " />
-            <marker date="1513015623887" expanded="true" signature="6607:6668" ph="UPDATE chara... " />
-            <marker date="1513015623887" expanded="true" signature="6720:6813" ph="SELECT locat... location" />
-            <marker date="1513015623887" expanded="true" signature="6929:7036" ph="UPDATE locat... " />
-            <marker date="1513015623887" expanded="true" signature="7089:7169" ph="UPDATE npc S... " />
-            <marker date="1513015623887" expanded="true" signature="7345:7421" ph="UPDATE npc S... " />
-            <marker date="1513015623887" expanded="true" signature="7515:7589" ph="UPDATE chara... " />
+            <marker date="1513038602354" expanded="true" signature="178:233" ph="SELECT hp, a... character_" />
+            <marker date="1513038602354" expanded="true" signature="711:7656" ph="..." />
+            <marker date="1513038602354" expanded="true" signature="1350:1375" ph="SELECT hp FR... character_" />
+            <marker date="1513038602354" expanded="true" signature="3126:3202" ph="UPDATE npc S... " />
+            <marker date="1513038602354" expanded="true" signature="4203:4279" ph="UPDATE npc S... " />
+            <marker date="1513038602354" expanded="true" signature="4397:4470" ph="UPDATE chara... " />
+            <marker date="1513038602354" expanded="true" signature="5911:5961" ph="UPDATE chara... " />
+            <marker date="1513038602354" expanded="true" signature="6457:7025" ph="..." />
+            <marker date="1513038602354" expanded="true" signature="6478:6554" ph="UPDATE npc S... " />
+            <marker date="1513038602354" expanded="true" signature="6607:6668" ph="UPDATE chara... " />
+            <marker date="1513038602354" expanded="true" signature="6720:6813" ph="SELECT locat... location" />
+            <marker date="1513038602354" expanded="true" signature="6929:7025" ph="UPDATE locat... " />
+            <marker date="1513038602354" expanded="true" signature="7264:7656" ph="..." />
+            <marker date="1513038602354" expanded="true" signature="7380:7456" ph="UPDATE npc S... " />
+            <marker date="1513038602354" expanded="true" signature="7550:7624" ph="UPDATE chara... " />
+            <marker date="1513038602354" expanded="true" signature="7680:7791" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/talk_answer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="111" column="38" lean-forward="true" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
+        <state relative-caret-position="1853">
+          <caret line="111" column="38" lean-forward="false" selection-start-line="111" selection-start-column="38" selection-end-line="111" selection-end-column="38" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1513024689109" expanded="true" signature="243:333" ph="SELECT npc_i... npc" />
-            <marker date="1513024689109" expanded="true" signature="640:697" ph="SELECT name npc" />
-            <marker date="1513024689109" expanded="true" signature="1761:1817" ph="SELECT npc_i... npc" />
-            <marker date="1513024689109" expanded="true" signature="1922:2055" ph="SELECT line_... npc" />
-            <marker date="1513024689109" expanded="true" signature="2271:2409" ph="SELECT line,... line" />
-            <marker date="1513024689109" expanded="true" signature="2271:2440" ph="SELECT line,... line" />
-            <marker date="1513024689109" expanded="true" signature="2410:2439" ph="SELECT MIN(l... line" />
-            <marker date="1513024689109" expanded="true" signature="2470:2617" ph="SELECT previ... answer" />
-            <marker date="1513024689109" expanded="true" signature="2587:2616" ph="SELECT MIN(l... line" />
-            <marker date="1513024689109" expanded="true" signature="2669:2831" ph="SELECT line_... line" />
-            <marker date="1513024689109" expanded="true" signature="2861:3001" ph="SELECT previ... answer" />
-            <marker date="1513024689109" expanded="true" signature="3954:4066" ph="SELECT next_... answer" />
-            <marker date="1513024689109" expanded="true" signature="4532:4599" ph="UPDATE npc S... " />
-            <marker date="1513024689109" expanded="true" signature="4853:4965" ph="SELECT next_... answer" />
-            <marker date="1513024689109" expanded="true" signature="5431:5498" ph="UPDATE npc S... " />
-            <marker date="1513024689109" expanded="true" signature="5800:5867" ph="UPDATE npc S... " />
-            <marker date="1513024689109" expanded="true" signature="6046:6115" ph="UPDATE npc S... " />
+            <marker date="1513038602355" expanded="true" signature="243:333" ph="SELECT npc_i... npc" />
+            <marker date="1513038602355" expanded="true" signature="640:697" ph="SELECT name npc" />
+            <marker date="1513038602355" expanded="true" signature="1660:6459" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="1761:1822" ph="SELECT npc_i... npc" />
+            <marker date="1513038602355" expanded="true" signature="1873:6387" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="1927:2060" ph="SELECT line_... npc" />
+            <marker date="1513038602355" expanded="true" signature="2125:6387" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="2181:6005" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="2247:2623" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="2276:2414" ph="SELECT line,... line" />
+            <marker date="1513038602355" expanded="true" signature="2276:2445" ph="SELECT line,... line" />
+            <marker date="1513038602355" expanded="true" signature="2415:2444" ph="SELECT MIN(l... line" />
+            <marker date="1513038602355" expanded="true" signature="2475:2622" ph="SELECT previ... answer" />
+            <marker date="1513038602355" expanded="true" signature="2592:2621" ph="SELECT MIN(l... line" />
+            <marker date="1513038602355" expanded="true" signature="2645:3007" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="2674:2836" ph="SELECT line_... line" />
+            <marker date="1513038602355" expanded="true" signature="2866:3006" ph="SELECT previ... answer" />
+            <marker date="1513038602355" expanded="true" signature="3074:6005" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3114:5667" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3161:5667" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3393:3500" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3576:3871" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3613:3721" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3918:4768" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="3959:4071" ph="SELECT next_... answer" />
+            <marker date="1513038602355" expanded="true" signature="4176:4768" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="4293:4446" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="4488:4768" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="4537:4604" ph="UPDATE npc S... " />
+            <marker date="1513038602355" expanded="true" signature="4817:5667" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="4858:4970" ph="SELECT next_... answer" />
+            <marker date="1513038602355" expanded="true" signature="5075:5667" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="5192:5345" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="5387:5667" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="5436:5503" ph="UPDATE npc S... " />
+            <marker date="1513038602355" expanded="true" signature="5693:6005" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="5805:5872" ph="UPDATE npc S... " />
+            <marker date="1513038602355" expanded="true" signature="6023:6387" ph="..." />
+            <marker date="1513038602355" expanded="true" signature="6051:6120" ph="UPDATE npc S... " />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/help.py">
+    <entry file="file://$PROJECT_DIR$/help.py" />
+    <entry file="file://$PROJECT_DIR$/pick.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="595">
+          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
+          <folding>
+            <marker date="1512994076073" expanded="true" signature="742:845" ph="SELECT name,... item" />
+            <marker date="1512994076073" expanded="true" signature="864:973" ph="UPDATE item " />
+            <marker date="1512994076073" expanded="true" signature="992:1083" ph="UPDATE item " />
+            <marker date="1512994076073" expanded="true" signature="1120:1229" ph="SELECT name,... item" />
+            <marker date="1512994076073" expanded="true" signature="1248:1388" ph="UPDATE item " />
+            <marker date="1512994076073" expanded="true" signature="1407:1529" ph="UPDATE item " />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game_creator.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="252" column="0" lean-forward="true" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+        <state relative-caret-position="187">
+          <caret line="250" column="0" lean-forward="true" selection-start-line="250" selection-start-column="0" selection-end-line="250" selection-end-column="0" />
           <folding>
             <element signature="e#240#268#0" expanded="true" />
             <marker date="1513016742963" expanded="true" signature="889:910" ph="SELECT name item" />
@@ -976,53 +1033,38 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/loc_npc_look.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="62" column="29" lean-forward="false" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+        <state relative-caret-position="319">
+          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
-            <marker date="1513038102815" expanded="true" signature="228:320" ph="SELECT locat... location" />
-            <marker date="1513038102815" expanded="true" signature="798:878" ph="SELECT descr... item" />
-            <marker date="1513038102815" expanded="true" signature="1138:1220" ph="SELECT npc.d... npc" />
-            <marker date="1513038102815" expanded="true" signature="1815:1917" ph="SELECT inspe... item" />
-            <marker date="1513038102815" expanded="true" signature="2165:2243" ph="SELECT inspe... item" />
-            <marker date="1513038102815" expanded="true" signature="2651:2697" ph="SELECT voice... voice" />
-            <marker date="1513038102815" expanded="true" signature="2651:2723" ph="SELECT voice... voice" />
-            <marker date="1513038102815" expanded="true" signature="3008:3078" ph="SELECT direc... direction" />
-            <marker date="1513038102815" expanded="true" signature="3690:3852" ph="SELECT neede... location" />
+            <marker date="1513039327804" expanded="true" signature="228:320" ph="SELECT locat... location" />
+            <marker date="1513039327804" expanded="true" signature="798:878" ph="SELECT descr... item" />
+            <marker date="1513039327804" expanded="true" signature="1138:1220" ph="SELECT npc.d... npc" />
+            <marker date="1513039327804" expanded="true" signature="1780:1882" ph="SELECT inspe... item" />
+            <marker date="1513039327804" expanded="true" signature="2010:2088" ph="SELECT inspe... item" />
+            <marker date="1513039327804" expanded="true" signature="2512:2558" ph="SELECT voice... voice" />
+            <marker date="1513039327804" expanded="true" signature="2512:2584" ph="SELECT voice... voice" />
+            <marker date="1513039327804" expanded="true" signature="2869:2939" ph="SELECT direc... direction" />
+            <marker date="1513039327804" expanded="true" signature="3551:3713" ph="SELECT neede... location" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-38">
-          <caret line="67" column="17" lean-forward="true" selection-start-line="67" selection-start-column="17" selection-end-line="67" selection-end-column="17" />
+        <state relative-caret-position="255">
+          <caret line="117" column="0" lean-forward="true" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1513038299673" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
-            <marker date="1513038299673" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
-            <marker date="1513038299673" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
-            <marker date="1513038299673" expanded="true" signature="2683:2742" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="2961:3024" ph="SELECT id FR... prepositions" />
-            <marker date="1513038299673" expanded="true" signature="3251:3310" ph="SELECT id FR... dictionary" />
-            <marker date="1513038299673" expanded="true" signature="3692:3829" ph="SELECT subro... jump_table" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pick.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" column="33" lean-forward="false" selection-start-line="35" selection-start-column="33" selection-end-line="35" selection-end-column="33" />
-          <folding>
-            <marker date="1512994076073" expanded="true" signature="742:845" ph="SELECT name,... item" />
-            <marker date="1512994076073" expanded="true" signature="864:973" ph="UPDATE item " />
-            <marker date="1512994076073" expanded="true" signature="992:1083" ph="UPDATE item " />
-            <marker date="1512994076073" expanded="true" signature="1120:1229" ph="SELECT name,... item" />
-            <marker date="1512994076073" expanded="true" signature="1248:1388" ph="UPDATE item " />
-            <marker date="1512994076073" expanded="true" signature="1407:1529" ph="UPDATE item " />
+            <marker date="1513039380017" expanded="true" signature="1030:1052" ph="SELECT * FRO... articles" />
+            <marker date="1513039380017" expanded="true" signature="1247:1270" ph="SELECT verbs... verbs" />
+            <marker date="1513039380017" expanded="true" signature="1447:1480" ph="SELECT dicti... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="1684:1710" ph="SELECT * FRO... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="2389:2438" ph="SELECT id FR... verbs" />
+            <marker date="1513039380017" expanded="true" signature="2653:2712" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="2905:2968" ph="SELECT id FR... prepositions" />
+            <marker date="1513039380017" expanded="true" signature="3195:3254" ph="SELECT id FR... dictionary" />
+            <marker date="1513039380017" expanded="true" signature="3619:3756" ph="SELECT subro... jump_table" />
           </folding>
         </state>
       </provider>

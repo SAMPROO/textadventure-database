@@ -87,12 +87,10 @@ while verb is not quit:
 
         if word in dictionary_list and direct == None:
             direct_str = word
-            print(direct_str)
             sql = "SELECT id FROM dictionary WHERE dictionary = '" + word + "'"
             cur.execute(sql)
             for row in cur:
                 direct = row[0]
-            print(direct)
             continue
 
         if word in preposition_list and preposition == None:
@@ -117,7 +115,6 @@ while verb is not quit:
     for n, i in enumerate(order):
         if i == None:
             order[n] = 255
-    print(order)
 
     #CHECKING IF GIVEN WORD ORDER HAS A SUBROUTINE IN THE DATABASE
     sql_check = "SELECT subroutine FROM jump_table WHERE verb = {0} \

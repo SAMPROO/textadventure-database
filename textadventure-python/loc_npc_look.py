@@ -49,23 +49,18 @@ def inspect(conn, location_id, item):
         print("What do you want to inspect?")
         item = input("--> ")
         inspect(conn, location_id, item)
+
     else:
 
-        if location_id is not None:
             cur.execute("SELECT inspect FROM item WHERE item_location_id = '" + str(location_id) + "' AND name = '" + item + "'")
             if cur.rowcount >= 1:
                 print(cur.fetchall()[0][0])
             else:
-                print("\nThis doest't interest me..")
-
-        else:
-            print(item)
-            print(location_id)
-            cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
-            if cur.rowcount >= 1:
-                print(cur.fetchall()[0][0])
-            else:
-                print("\nThis doest't interest me..")
+                cur.execute("SELECT inspect FROM item WHERE item_character_id = 1 AND name = '" + item + "'")
+                if cur.rowcount >= 1:
+                    print(cur.fetchall()[0][0])
+                else:
+                    print("\nThis doest't interest me..")
 
     return location_id
 
