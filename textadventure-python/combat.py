@@ -169,10 +169,9 @@ def combat(conn, location_id, npc):
             cur.execute(sql5)
             sql6 = "UPDATE character_ SET character_.hp = '" + str(player_hp) +"'"
             cur.execute(sql6)
-            sql11 ="SELECT location_id FROM location INNER JOIN npc ON location.location_id = npc.npc_location_id"
+            sql11 ="SELECT location_id FROM location INNER JOIN npc ON location.location_id = npc.npc_location_id WHERE npc.name = '" + npc + "'"
             cur.execute(sql11)
             row = cur.fetchall()[0]
-            print(row[0])
             sql12 = "UPDATE location SET needed_item = NULL, no_item = NULL, yes_item = NULL WHERE location_id = '"+ str(row[0]) + "'"
             cur.execute(sql12)
             sql8 = "UPDATE npc SET npc_location_id = NULL, met_npc = 1 WHERE npc.name= '" + npc + "'"
