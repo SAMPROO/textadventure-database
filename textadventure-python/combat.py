@@ -5,6 +5,7 @@ import time
 
 
 def combat(conn, location_id, npc):
+    eatbales_inventory = []
     x = 1
     cur = conn.cursor()
     print("------------------------")
@@ -95,13 +96,28 @@ def combat(conn, location_id, npc):
                     print("You raise your defences!")
 
                 elif command == '3' or command == 'heal': #player heals
-                    '''
-                    item = None
-                    eat.eat(conn, location_id, item)
-                    print("You ate, your health is now: " + str(player_hp))
-                    '''
-                    print("To heal you need to buy The Orphanage Food Store DLC")
-                    print("For only 99.99$")
+
+                    eatables = "SELECT name FROM item WHERE eatable = 1 AND item_character_id = 1"
+                    cur.execute(eatables)
+                    print("Eatables in inventory")
+                    for row in cur:
+                        print(" -" + row[0])
+                        eatbales_inventory.append(row[0])
+                    choose = input("\n--> ")
+
+                    if choose in eatbales_inventory:
+                        eat.eat(conn, location_id, choose)
+                    else:
+                        print("Choose what you want to eat:")
+                        for row in eatbales_inventory:
+                            print(" -" + row)
+                        choose = input("\n--> ")
+                        if choose in eatbales_inventory:
+                            eat.eat(conn, location_id, choose)
+                        else:
+                            pass
+
+
 
                 elif command == '4' or command == 'run': #player runs away
                     location_id = location_id - 1
